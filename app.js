@@ -333,7 +333,7 @@ clearTimeout(timeout)
 			laketrix = new WebKitCSSMatrix(window.getComputedStyle(lake).transform);
 		}
 		if(daynumber >= 4){
-			day.innerHTML = "Day " + daynumber + ". Keep your stats in check. Now, water is a factor. Find the lake at (0, 0), then press D to drink.";
+			day.innerHTML = "Day " + daynumber + ". Keep your stats in check. Now, water is a factor. Find the sink at (0, 0), then press D to drink.";
 		}
 		if(daynumber > 4){
 			thirst += 10;
@@ -343,7 +343,7 @@ clearTimeout(timeout)
 													location.reload
 			}
 		}
-		await Queue.fire({currentProgressStep: 0,text: "Wake up sleepyhead! You must go live today!"});
+		await Queue.fire({currentProgressStep: 0,text: "Wake up sleepyhead! You must go hope today!"});
 		
 		
 		night = false;
@@ -353,7 +353,7 @@ clearTimeout(timeout)
 													 universe.hidden = false;
 												 }, 5000)
 		if(daynumber >= 6){
-			day.innerHTML = "Day " + daynumber + ". look for an abandoned building near (2000, 700).";
+			day.innerHTML = "Day " + daynumber + ". look for an abandoned playground near (2000, 700).";
 			
 			model.style.scale = "3 3 3";
 			model.style.height = "500px";
@@ -364,7 +364,7 @@ clearTimeout(timeout)
 			model.style.transform = "translate3d(-2000px, 0px, 700px) perspective(5000px)";
 			task.max = 1;
 													 task.value = 1;
-													 tasks.innerHTML = "Find Building";
+													 tasks.innerHTML = "Find Playground";
 		}
 	}
 		timeout = setTimeout(time, 90000);
