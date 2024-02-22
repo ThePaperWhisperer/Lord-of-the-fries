@@ -133,7 +133,7 @@
 	body {
 		perspective: 5000px;
 		overflow: hidden;
-		background: url(sky.jpg);
+		background: url(bg.png);
 	}
 
 	#main {
