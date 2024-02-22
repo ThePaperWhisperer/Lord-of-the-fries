@@ -145,7 +145,7 @@ deer.hidden = true;
 			document.body.appendChild(deer);
 async function hunt() {
 		if(daynumber < 3){
-		await Queue.fire({currentProgressStep: 0,text: "Click to get the deer in time."});
+		await Queue.fire({currentProgressStep: 0,text: "Click to get the fries in time."});
 			deer.hidden = false;
 			deer.addEventListener("click", foodget);
 		
