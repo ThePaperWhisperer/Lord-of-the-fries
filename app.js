@@ -385,7 +385,6 @@ async function load() {
 	document.getElementById("heli").pause();
 	document.getElementById("boom").play();
 	day.innerHTML = "Day " + daynumber + ". Use arrow keys to move and  space to search for resources.";
-	document.body.style.background = "black";
 	day.style.color = "white";
 	day.style.position = "absolute";
 	day.style.zIndex = "140";
