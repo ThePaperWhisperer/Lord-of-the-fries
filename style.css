@@ -134,6 +134,8 @@
 		perspective: 5000px;
 		overflow: hidden;
 		background: url(bg.png);
+		background-repeat: no-repeat;
+		background-size: 100vw 100vh;
 	}
 
 	#main {
