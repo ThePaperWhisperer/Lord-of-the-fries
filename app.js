@@ -66,6 +66,7 @@ document.body.appendChild(hamburglar);
 hamburglar.hidden = true;
 var clickH = 0;
 async function burglar(){
+	clickH = 0;
 	if(night == true){
 		hamburglar.hidden = false;
 			await Queue.fire({currentProgressStep: 0,text: "The hamburglars are coming!!!!!!!!!! Click them 5 times to make them go away"});
