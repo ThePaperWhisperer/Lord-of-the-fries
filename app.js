@@ -107,8 +107,12 @@ function burglar(){
 			}
 			
 		}, 2000)
+		setTimeout(burglar, 45000);
+
 	}
-	setTimeout(burglar, 45000);
+	else{
+	setTimeout(burglar, 3000);
+	}
 }
 async function lose(){
 	health.value--;
@@ -426,7 +430,7 @@ async function move(){
 	document.getElementById("universe").style.transform = "translate3d(" + b + "px, " + y + "px, " + a + "px) perspective(" + ( a +5000) + "px)";
 }
 async function load() {
-	setTimeout(burglar, 45000);
+	setTimeout(burglar, 3000);
 	document.getElementById("universe").style.position = "absolute";
 	document.getElementById("universe").style.zIndex = "1";
 	timeout = setTimeout(time, 90000);
