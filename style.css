@@ -78,7 +78,7 @@
 	h1{
 		
 	}
-#top1, bottom1, topleft1, topright1,topfront1, topback1, bottomleft1, bottomright1,bottomfront1, bottomback1{
+#top1, #bottom1, #topleft1, #topright1, #topfront1, #topback1, #bottomleft1, #bottomright1, #bottomfront1, #bottomback1{
 	position: absolute;
 	height: 3000vh;;
 	width: 3000vw;
