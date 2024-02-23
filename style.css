@@ -1,38 +1,38 @@
 	#top1{
 	
-	transform: rotateX(-90deg) translateY(-250px);
+	transform: rotateX(-90deg) translateY(-1500vh);
 	transform-origin: top;
 }
 #topleft1{
 	
 	height: 250px;
 	width: 500px;
-	transform: rotateY(90deg) translateX(-250px);
+	transform: rotateY(90deg) translateX(-1500vw);
 	transform-origin: left;
 }
 #topright1{
 	
 	height: 250px;
 	width: 500px;
-	transform: rotateY(90deg) translateX(250px);
+	transform: rotateY(90deg) translateX(-1500vw);
 	transform-origin: right;
 }
 #topfront1{
 	
 	height: 250px;
 	width: 500px;
-	transform: translateZ(250px);
+	transform: translateZ(1500vh);
 }
 #topback1{
 	
 	height: 250px;
 	width: 500px;
-	transform: translateZ(-250px);
+	transform: translateZ(1500vh);
 }
 #bottom1{
 	height: 500px;
 	width: 500px;
-	transform: rotateX(90deg) translateY(250px);
+	transform: rotateX(90deg) translateY(1500vh);
 	transform-origin: bottom;
 	background-image: url(grass.jpg);
 	
@@ -43,7 +43,7 @@
 	
 	height: 250px;
 	width: 500px;
-	transform: rotateY(90deg) translateX(-250px);
+	transform: rotateY(90deg) translateX(-1500vw);
 	transform-origin: left;
 	top: 250px;
 }
@@ -51,7 +51,7 @@
 	
 	height: 250px;
 	width: 500px;
-	transform: rotateY(90deg) translateX(250px);
+	transform: rotateY(90deg) translateX(1500vw);
 	transform-origin: right;
 	top: 250px;
 }
@@ -59,7 +59,7 @@
 	
 	height: 250px;
 	width: 500px;
-	transform: translateZ(250px);
+	transform: translateZ(1500vh);
 	top: 250px;
 }
 #bottomback1{
@@ -67,7 +67,7 @@
 	
 	height: 250px;
 	width: 500px;
-	transform: translateZ(-250px);
+	transform: translateZ(-1500vh);
 }
 #other{
 		height: 100px;
