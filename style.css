@@ -133,11 +133,9 @@
 	body {
 		perspective: 5000px;
 		overflow: hidden;
-		background: url(bg.png);
-		background-repeat: no-repeat;
-		background-size: 100vw 100vh;
+		
 	}
-
+	
 	#main {
 		text-align: center;
 		border: 2px solid black;
@@ -199,6 +197,9 @@
 		transform: translateY(-400px);
 		transform-origin: -2500px 0px;
 		position: absolute;
+		background: url(bg.png);
+		background-repeat: no-repeat;
+		background-size: 3000vw 3000vh;
 	}
 	mark{
 		color: yellow;
