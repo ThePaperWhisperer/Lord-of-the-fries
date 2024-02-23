@@ -65,10 +65,10 @@ hamburglar.style.zIndex = "10000";
 document.body.appendChild(hamburglar);
 hamburglar.hidden = true;
 var clickH = 0;
-function burglar(){
+async function burglar(){
 	if(night == true){
 		hamburglar.hidden = false;
-		alert("The hamburglars are coming!!!!!!!!!! Click them 5 times to make them go away");
+			await Queue.fire({currentProgressStep: 0,text: "The hamburglars are coming!!!!!!!!!! Click them 5 times to make them go away"});
 		hamburglar.onclick = ()=> {
 			clickH++;
 			if(clickH === 5){
