@@ -686,12 +686,7 @@ async function load() {
 			document.getElementById("world").appendChild(newrow);
 		}
 
-		for (let i = 0; i < document.getElementsByClassName("tree").length; i++) {
-			t = Math.floor(Math.random() * 3);
-			if (t === 2) {
-				document.getElementsByClassName("tree")[i].hidden = false;
-			}
-		}
+		
 	}, 5000);
 
 
