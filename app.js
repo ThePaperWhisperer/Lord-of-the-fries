@@ -425,7 +425,7 @@ clearTimeout(timeout)
 			room.style.transformStyle = "preserve=3d";
 			room.style.position = "absolute";
 
-
+var rot = 0;
 async function move(){
 	document.getElementById("universe").style.transform = "translate3d(" + b + "px, " + y + "px, " + a + "px) perspective(" + ( a +5000) + "px)";
 }
@@ -463,7 +463,10 @@ async function load() {
 		wood5 = new WebKitCSSMatrix(window.getComputedStyle(document.getElementById("4")).transform); 
 		document.onkeydown = async (e) =>{
 		if(document.activeElement != document.getElementById("message")){
-			
+			if(e.key == "w"){
+				rot+=10;
+				document.getElementById("universe").style.rotate = "0 1 0 " + rot + "deg";
+			}
 
 			a = parseInt(a);
 			b = parseInt(b);
