@@ -57,6 +57,59 @@ var b = 0;
 var c = 0;
 var y = 0;
 var clicks = 0;
+var hamburglar;
+ hamburglar = new Image(500, 500);
+ hamburglar.src = "hamburglar.png";
+hamburglar.style.position = "absolute";
+hamburglar.style.zIndex = "10000";
+document.body.appendChild(hamburglar);
+hamburglar.hidden = true;
+var clickH = 0;
+function burglar(){
+	if(night == true && Math.floor(Math.random() * 3) === 2){
+		hmaburglar.hidden = false;
+		alert("The hamburglars are coming!!!!!!!!!! Click them 5 times to make them go away");
+		hamburglar.onclick = ()=> {
+			clickH++;
+			if(clickH === 5){
+				hamburglar.hidden = true;
+			}
+		}
+		setTimeout(()=> {
+			if(hamburglar.hidden = false){
+				health.value--;
+				setTimeout(()=> {
+			if(hamburglar.hidden = false){
+				health.value--;
+				setTimeout(()=> {
+			if(hamburglar.hidden = false){
+				health.value--;
+				setTimeout(()=> {
+			if(hamburglar.hidden = false){
+				health.value--;
+				setTimeout(()=> {
+			if(hamburglar.hidden = false){
+				health.value--;
+				await Queue.fire({currentProgressStep: 0,text: "You died, better luck next time."});
+				location.reload();
+			}
+			
+		}, 2000)
+			}
+			
+		}, 2000)
+			}
+			
+		}, 2000)
+			}
+			
+		}, 2000)
+			}
+			
+		}, 2000)
+	}
+	setTimeout(burglar, 45000);
+}
 async function lose(){
 	health.value--;
 	if(clicks <50){
@@ -65,7 +118,7 @@ async function lose(){
 		}
 		else{
 			await Queue.fire({currentProgressStep: 0,text: "You died, better luck next time."});
-			
+			location.reload();
 		}
 	}
 }
@@ -378,6 +431,7 @@ async function move(){
 	document.getElementById("universe").style.transform = "translate3d(" + b + "px, " + y + "px, " + a + "px) perspective(" + ( a +5000) + "px)";
 }
 async function load() {
+	setTimeout(burglar, 45000);
 	document.getElementById("universe").style.position = "absolute";
 	document.getElementById("universe").style.zIndex = "1";
 	timeout = setTimeout(time, 90000);
