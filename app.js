@@ -67,7 +67,7 @@ hamburglar.hidden = true;
 var clickH = 0;
 function burglar(){
 	if(night == true){
-		hmaburglar.hidden = false;
+		hamburglar.hidden = false;
 		alert("The hamburglars are coming!!!!!!!!!! Click them 5 times to make them go away");
 		hamburglar.onclick = ()=> {
 			clickH++;
