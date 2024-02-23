@@ -231,7 +231,7 @@ document.getElementById("text").hidden = true;
 document.getElementById("option").innerHTML = "Do You Want To Create A Room?";
 
 document.getElementById("ok").onclick = async () => {
-
+	document.getElementById("intro").play();
 	document.getElementById("dialog").hidden = true;
 	
 	var {value: room} = await Queue.fire({currentProgressStep: 0,input: "text", text:"Choose a private room name."});
@@ -250,7 +250,8 @@ document.getElementById("ok").onclick = async () => {
 
 document.getElementById("neither").onclick = async () => {
 	document.getElementById("dialog").hidden = true;
-	
+		document.getElementById("intro").play();
+
 	choose();
 	
 	document.getElementById("heli").play();
@@ -269,7 +270,7 @@ document.getElementById("neither").onclick = async () => {
 };
 document.getElementById("no").onclick = async () => {
 	document.getElementById("dialog").hidden = true;
-	
+	document.getElementById("intro").play();
 	var {value:roomname} = await Queue.fire({currentProgressStep: 0,input: "text", text:"Enter the room name."});
 	if(roomname){
 	var {value: pass} = await Queue.fire({currentProgressStep: 1,input: "text", text:"Enter the room's password."});
