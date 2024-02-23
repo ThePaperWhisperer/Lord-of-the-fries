@@ -87,7 +87,7 @@ function burglar(){
 				setTimeout(()=> {
 			if(hamburglar.hidden = false){
 				health.value--;
-				setTimeout(()=> {
+				setTimeout(async ()=> {
 			if(hamburglar.hidden = false){
 				health.value--;
 				await Queue.fire({currentProgressStep: 0,text: "You died, better luck next time."});
