@@ -27,7 +27,7 @@
 	
 	height: 250px;
 	width: 500px;
-	transform: translateZ(1500vh);
+	transform: translateZ(-1500vh);
 }
 #bottom1{
 	height: 500px;
