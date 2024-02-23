@@ -369,25 +369,20 @@ clearTimeout(timeout)
 												 }
 												 daynumber++;
 												 if(daynumber === 2){
-													 day.innerHTML = "Day " + daynumber + ". Look around the area for wood. 6 wood will help you make a fire to cook your meat.";
+													 day.innerHTML = "Day " + daynumber + ". Look around the area for wood. 6 wood will help you make a fire to warm up your fries.";
 													 task.max = 6;
 													 task.value = 6;
 													 tasks.innerHTML = "Make Fire";
 												 }
-		 if(daynumber === 3){
-													 day.innerHTML = "Day " + daynumber + ". Look around the area for other food. The deer are getting skeptical.";
-													 task.max = 6;
-													 task.value = 6;
-													 tasks.innerHTML = "Forage";
-												 }
-		if(daynumber === 4) {
+		 
+		if(daynumber === 3) {
 			document.getElementById("universe").appendChild(lake);
 			laketrix = new WebKitCSSMatrix(window.getComputedStyle(lake).transform);
 		}
-		if(daynumber >= 4){
+		if(daynumber >= 3){
 			day.innerHTML = "Day " + daynumber + ". Keep your stats in check. Now, water is a factor. Find the sink at (0, 0), then press D to drink.";
 		}
-		if(daynumber > 4){
+		if(daynumber > 3){
 			thirst += 10;
 			if(thirst >=30){
 				 await Queue.fire({currentProgressStep: 0,text: "You did not drink enough. Game Over."});
@@ -404,7 +399,7 @@ clearTimeout(timeout)
 													 day.hidden = true;
 													 universe.hidden = false;
 												 }, 5000)
-		if(daynumber >= 6){
+		if(daynumber >= 5){
 			day.innerHTML = "Day " + daynumber + ". look for an abandoned playground near (2000, 700).";
 			
 			model.style.scale = "3 3 3";
