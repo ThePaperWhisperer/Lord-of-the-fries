@@ -415,7 +415,7 @@ clearTimeout(timeout)
 			model.style.width = "500px"
 			task.max = 1;
 			model.style.position = "absolute";
-			model.style.transform = "translate3d(-2000px, 0px, 700px) perspective(3000px)";
+			model.style.transform = "translate3d(-2000px, 0px, -700px) ";
 			task.max = 1;
 													 task.value = 1;
 													 tasks.innerHTML = "Find Playground";
