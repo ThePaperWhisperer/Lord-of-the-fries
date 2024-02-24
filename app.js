@@ -211,7 +211,6 @@ async function hunt() {
 		}, 5000);
 	
 		}
-	}
 async function choose() {
 	
 	ss = new SpeechSynthesisUtterance("Hello "+ username +". Welcome to Survivor. We will pick you up in a month. OH NO WHAT IS THAT!!!!!!");
