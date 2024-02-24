@@ -259,4 +259,7 @@
 	#messages{
 		overflow-y: scroll;
 	}
+#modeldiv{
+	perspective: 1000px;	
+}
 
