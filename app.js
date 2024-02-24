@@ -615,7 +615,6 @@ async function load() {
 				frame.style.width = "100vw";
 				document.body.appendChild(frame)
 				while(!frame.contentWindow.end){
-					console.log("room playing");
 				}
 				frame.remove();
 									await Queue.fire({currentProgressStep: 0,text: "Find Ronald and click him to get the key!"}); 		
