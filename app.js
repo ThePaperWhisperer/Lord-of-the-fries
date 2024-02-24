@@ -133,16 +133,15 @@ async function battle(){
 	document.getElementById("hunter").onclick = async () => {
 		clicks++;
 		if(clicks === 50){
-			await Queue.fire({currentProgressStep: 0,text: "Press 'e' to call in a ride and escape!"})
+			await Queue.fire({currentProgressStep: 0,text: "Press 'k' to steal the key!"})
 			
 			document.onkeydown = (e)=> {
-				if(e.key == "e"){
+				if(e.key == "k"){
 					e.preventDefault();
 					document.getElementById("heli").play();
 					setTimeout(async () => {
 					await Queue.fire({currentProgressStep: 0,text: "You escaped!"});
 						socket.emit("escape", username)
-						await Queue.fire({currentProgressStep: 1,text: "credits to Marine hunter (https://skfb.ly/6UtoZ) by ill_drakon is licensed under Creative Commons Attribution-NonCommercial (http://creativecommons.org/licenses/by-nc/4.0/) and Table Fancy Small (https://skfb.ly/oLSwo) by GameDevMoot is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/) for 3d models."})
 						
 						location.reload();
 					}, 7000)
@@ -472,6 +471,9 @@ async function load() {
 				rot+=10;
 				document.getElementById("universe").style.rotate = "0 1 0 " + rot + "deg";
 			}
+			if(e.key == "f"){
+				await Queue.fire({currentProgressStep: 0,text: "Sorry, the Mcflurry mchine is broke. try again tomorrow"});
+			}
 
 			a = parseInt(a);
 			b = parseInt(b);
@@ -618,7 +620,7 @@ async function load() {
 				var popup = window.open("room.html");
 				popup.window.addEventListener('load', async () => {
   					popup.window.addEventListener('unload', async () => {
-						await Queue.fire({currentProgressStep: 0,text: "find the hunter and get him to avenge the remaining deer"});
+						await Queue.fire({currentProgressStep: 0,text: "Find Ronald and click him to get the key!"});
 						
 						document.getElementById("hunter").style.display = "block";
 						battle();
