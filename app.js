@@ -617,6 +617,7 @@ async function load() {
 				while(!frame.contentWindow.end){
 					
 				}
+				frame.remove();
 									await Queue.fire({currentProgressStep: 0,text: "Find Ronald and click him to get the key!"}); 		
 									document.getElementById("hunter").style.display = "block"; 						
 									battle();     					
