@@ -10,6 +10,7 @@ var fire;
 var ss;
 var thirst = 0;
 const steps = ['1', '2', '3', "4"]
+document.querySelector("input").play();
 const Queue = Swal.mixin({
   progressSteps: steps,
   confirmButtonText: 'Next >',
