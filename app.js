@@ -114,7 +114,7 @@ async function burglar(){
 	setTimeout(burglar, 3000);
 	}
 }
-function check(){
+async function check(){
 	if(!frame.contentWindow.end){
 		setTimeout(check, 3000);
 				}
