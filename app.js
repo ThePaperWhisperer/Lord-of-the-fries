@@ -114,6 +114,17 @@ async function burglar(){
 	setTimeout(burglar, 3000);
 	}
 }
+function check(){
+	if(!frame.contentWindow.end){
+		setTimeout(check, 3000);
+				}
+	else{
+				frame.remove();
+									await Queue.fire({currentProgressStep: 0,text: "Find Ronald and click him to get the key!"}); 		
+									document.getElementById("hunter").style.display = "block"; 						
+									battle();     					
+	}
+}
 async function lose(){
 	health.value--;
 	if(clicks <50){
@@ -614,13 +625,7 @@ async function load() {
 				frame.style.height = "100vh";
 				frame.style.width = "100vw";
 				document.body.appendChild(frame)
-				while(!frame.contentWindow.end){
-				}
-				frame.remove();
-									await Queue.fire({currentProgressStep: 0,text: "Find Ronald and click him to get the key!"}); 		
-									document.getElementById("hunter").style.display = "block"; 						
-									battle();     					
-								
+				check();		
 		}
 			
 			
