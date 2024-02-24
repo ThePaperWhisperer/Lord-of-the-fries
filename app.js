@@ -613,7 +613,7 @@ async function load() {
 			}
 
 
-			if(e.key == "Enter" && daynumber > 5 && -matrix4.m41 === 2000 && matrix4.m43 === 700){
+			if(e.key == "Enter" && daynumber >= 5 && -matrix4.m41 === 2000 && matrix4.m43 === 700){
 				await Queue.fire({currentProgressStep: 0,text: "House Entered! Find the clues to discover what happened."});
 				
 				var popup = window.open("room.html");
@@ -648,7 +648,7 @@ async function load() {
 				}
 
 			}
-			if(e.key == "d" && daynumber > 3 && a === 0 && b === 0){
+			if(e.key == "d" && daynumber >= 3 && a === 0 && b === 0){
 				await Queue.fire({currentProgressStep: 0,text: "Your thirst went down by 5."});
 				
 				thirst -= 5;
