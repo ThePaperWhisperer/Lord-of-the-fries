@@ -231,6 +231,7 @@ document.getElementById("text").hidden = true;
 document.getElementById("option").innerHTML = "Do You Want To Create A Room?";
 
 document.getElementById("ok").onclick = async () => {
+	document.body.style.backgroundImage = "url(sky.jpg)";
 	document.getElementById("intro").play();
 	document.getElementById("dialog").hidden = true;
 		var {value: room} = await Queue.fire({currentProgressStep: 0,input: "text", text:"Choose a private room name."});
@@ -248,6 +249,7 @@ document.getElementById("ok").onclick = async () => {
 };
 
 document.getElementById("neither").onclick = async () => {
+	document.body.style.backgroundImage = "url(sky.jpg)";
 	document.getElementById("dialog").hidden = true;
 		document.getElementById("intro").play();
 
@@ -268,6 +270,7 @@ document.getElementById("neither").onclick = async () => {
 	
 };
 document.getElementById("no").onclick = async () => {
+	document.body.style.backgroundImage = "url(sky.jpg)";
 		document.getElementById("dialog").hidden = true;
 	document.getElementById("intro").play();
 	var {value:roomname} = await Queue.fire({currentProgressStep: 0,input: "text", text:"Enter the room name."});
@@ -431,6 +434,7 @@ async function move(){
 	document.getElementById("universe").style.transform = "translate3d(" + b + "px, " + y + "px, " + a + "px) perspective(" + ( a +5000) + "px)";
 }
 async function load() {
+		document.body.style.backgroundImage = "url(bg.png)";
 	document.querySelector("#bg").play();
 	setTimeout(burglar, 3000);
 	document.getElementById("universe").style.position = "absolute";
