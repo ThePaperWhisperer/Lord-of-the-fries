@@ -1,4 +1,6 @@
-
+#room *{
+	z-index: 100;
+}
 #other{
 		height: 100px;
 		width: 100px;
