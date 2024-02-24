@@ -410,12 +410,9 @@ clearTimeout(timeout)
 		if(daynumber >= 5){
 			day.innerHTML = "Day " + daynumber + ". look for an abandoned playground near (2000, 700).";
 			
-			model.style.scale = "3 3 3";
-			model.style.height = "500px";
-			model.style.width = "500px"
-			model.style.position = "absolute";
-			model.style.zIndex = "10000";
-			model.style.transform = "translate3d(-2000px, 0px, 700px) ";
+			model.style.height = "1500px";
+			model.style.width = "1500px"
+			document.getElementById("modeldiv").style.transform = "translate3d(-2000px, 0px, 700px) ";
 			task.max = 1;
 													 task.value = 1;
 													 tasks.innerHTML = "Find Playground";
