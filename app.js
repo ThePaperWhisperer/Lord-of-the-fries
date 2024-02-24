@@ -414,6 +414,7 @@ clearTimeout(timeout)
 			model.style.height = "500px";
 			model.style.width = "500px"
 			model.style.position = "absolute";
+			model.style.zIndex = "10000";
 			model.style.transform = "translate3d(-2000px, 0px, 700px) ";
 			task.max = 1;
 													 task.value = 1;
