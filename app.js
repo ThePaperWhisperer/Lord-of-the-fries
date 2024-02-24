@@ -10,7 +10,6 @@ var fire;
 var ss;
 var thirst = 0;
 const steps = ['1', '2', '3', "4"]
-document.querySelector("#bg").play();
 const Queue = Swal.mixin({
   progressSteps: steps,
   confirmButtonText: 'Next >',
@@ -234,7 +233,7 @@ document.getElementById("option").innerHTML = "Do You Want To Create A Room?";
 document.getElementById("ok").onclick = async () => {
 	document.getElementById("intro").play();
 	document.getElementById("dialog").hidden = true;
-	
+	document.querySelector("#bg").play();
 	var {value: room} = await Queue.fire({currentProgressStep: 0,input: "text", text:"Choose a private room name."});
 	if(room){
 	var {value: password} = await Queue.fire({currentProgressStep: 1,input: "text", text:"Choose a password."});
@@ -252,6 +251,7 @@ document.getElementById("ok").onclick = async () => {
 document.getElementById("neither").onclick = async () => {
 	document.getElementById("dialog").hidden = true;
 		document.getElementById("intro").play();
+document.querySelector("#bg").play();
 
 	choose();
 	
@@ -270,6 +270,7 @@ document.getElementById("neither").onclick = async () => {
 	
 };
 document.getElementById("no").onclick = async () => {
+	document.querySelector("#bg").play();
 	document.getElementById("dialog").hidden = true;
 	document.getElementById("intro").play();
 	var {value:roomname} = await Queue.fire({currentProgressStep: 0,input: "text", text:"Enter the room name."});
