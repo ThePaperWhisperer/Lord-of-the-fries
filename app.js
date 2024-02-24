@@ -609,8 +609,10 @@ async function load() {
 				frame = document.createElement("iframe");
 				frame.src = "room.html";
 				frame.style.position = "absolute";
-				iframe.style.transformStyle = "preserve-3d";
+				frame.style.transformStyle = "preserve-3d";
 				frame.style.zIndex = "1000000";
+				frame.style.height = "100vh";
+				frame.style.width = "100vw";
 				document.body.appendChild(frame)
 				while(!frame.contentWindow.end){
 					console.log("room playing");
