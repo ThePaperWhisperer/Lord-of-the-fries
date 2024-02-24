@@ -459,10 +459,7 @@ async function load() {
 		wood5 = new WebKitCSSMatrix(window.getComputedStyle(document.getElementById("4")).transform); 
 		document.onkeydown = async (e) =>{
 		if(document.activeElement != document.getElementById("message")){
-			if(e.key == "w"){
-				rot+=10;
-				document.getElementById("universe").style.rotate = "0 1 0 " + rot + "deg";
-			}
+			
 			if(e.key == "f"){
 				await Queue.fire({currentProgressStep: 0,text: "Sorry, the Mcflurry mchine is broke. try again tomorrow"});
 			}
@@ -609,13 +606,13 @@ async function load() {
 			if(e.key == "Enter" && daynumber >= 5 && -matrix4.m41 === 2000 && matrix4.m43 === 700){
 				await Queue.fire({currentProgressStep: 0,text: "PLayground Entered! Find the clues to discover what happened."});
 		
-			 			var frame =document.createElement("iframe");
+			 			var frame = document.createElement("iframe");
 				frame.src = "room.html";
 				frame.style.position = "absolute";
 				frame.style.zIndex = "100000";
 				document.body.appendChild(frame)
 				while(!frame.contentWindow.end){
-					
+					console.log("room playing.....")
 				}
 				frame.remove();
 									await Queue.fire({currentProgressStep: 0,text: "Find Ronald and click him to get the key!"}); 		
@@ -625,8 +622,7 @@ async function load() {
 		}
 			
 			
-				
-			}
+			
 			
 			if (sheltermatrix) {
 
