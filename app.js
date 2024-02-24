@@ -33,13 +33,12 @@ img.style.zIndex = "500";
 img.style.position = "absolute";
 document.getElementById("universe").appendChild(img);
 img.hidden = true;
-var lake = document.createElement("div");
+var lake = new Image();
 lake.style.height = "1000px";
 lake.style.width = "500px";
 lake.style.position = "absolute";
+lake.src = "lake.png"
 lake.style.transform = "translateX(1000px) translateZ(1000px) perspective(1200px)";
-lake.style.backgroundColor = "blue";
-lake.style.borderRadius = "50%";
 var laketrix;
 var food = 0;
 var fight = false;
