@@ -608,44 +608,22 @@ async function load() {
 
 			if(e.key == "Enter" && daynumber >= 5 && -matrix4.m41 === 2000 && matrix4.m43 === 700){
 				await Queue.fire({currentProgressStep: 0,text: "PLayground Entered! Find the clues to discover what happened."});
-				document.getElementById("room").hidden = false;
-				room.style.zIndex = "1000"
-				var parts = "";
-		// feature detect
-		var x, y;
-
-		window.addEventListener('mousemove', (e) => {
-			x = e.clientX;
-			y = - e.clientY;
-			document.getElementById("room").style.transform = `translateZ(600px) rotateY(${x}deg) rotateX(${y}deg)`;
-		});
-		document.getElementById("retro").onclick = () => {
-			Swal.fire({text:"Part 1 is: a bad time it is to fight"});
-			parts += "1";
-			if (parts.includes("1") && parts.includes("2") && parts.includes("3") && parts.includes("4")) { room.hidden = true;  				popup.window.addEventListener('load', async () => {   					popup.window.addEventListener('unload', async () => { 						await Queue.fire({currentProgressStep: 0,text: "Find Ronald and click him to get the key!"}); 						 						document.getElementById("hunter").style.display = "block"; 						battle();     					}); 				}); }
+		
+			 			var frame =document.createElement("iframe");
+				frame.src = "room.html";
+				frame.style.position = "absolute";
+				frame.style.zIndex = "100000";
+				document.body.appendChild(frame)
+				while(!frame.contentWindow.end){
+					
+				}
+									await Queue.fire({currentProgressStep: 0,text: "Find Ronald and click him to get the key!"}); 		
+									document.getElementById("hunter").style.display = "block"; 						
+									battle();     					
+								
 		}
-		document.getElementById("desk").onclick = () => {
-			Swal.fire({text:"Part 2 is: to find the hidden man at night"});
-
-			parts += "2";
-			if (parts.includes("1") && parts.includes("2") && parts.includes("3") && parts.includes("4")) { room.hidden = true;  				popup.window.addEventListener('load', async () => {   					popup.window.addEventListener('unload', async () => { 						await Queue.fire({currentProgressStep: 0,text: "Find Ronald and click him to get the key!"}); 						 						document.getElementById("hunter").style.display = "block"; 						battle();     					}); 				}); }
-
-		}
-		document.getElementById("answer").onclick = () => {
-			Swal.fire({text: "Part 3 is: during the day, you may succeed"});
-
-			parts += "3";
-			if (parts.includes("1") && parts.includes("2") && parts.includes("3") && parts.includes("4")) {room.hidden = true;   				popup.window.addEventListener('load', async () => {   					popup.window.addEventListener('unload', async () => { 						await Queue.fire({currentProgressStep: 0,text: "Find Ronald and click him to get the key!"}); 						 						document.getElementById("hunter").style.display = "block"; 						battle();     					}); 				}); }
-
-		}
-		document.getElementById("note").onclick = () => {
-			Swal.fire({text: "Part 4 is: if you pay back the deed"});
-			parts += "4";
-			if (parts.includes("1") && parts.includes("2") && parts.includes("3") && parts.includes("4")) {room.hidden = true;  				popup.window.addEventListener('load', async () => {   					popup.window.addEventListener('unload', async () => { 						await Queue.fire({currentProgressStep: 0,text: "Find Ronald and click him to get the key!"}); 						 						document.getElementById("hunter").style.display = "block"; 						battle();     					}); 				}); }
-
-
-		}
-
+			
+			
 				
 			}
 			
