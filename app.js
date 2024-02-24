@@ -307,7 +307,7 @@ socket.on("roomclosed", async (data) => {
 		});
 	}
 });
-
+var frame;
 socket.on("useradded", (u) => {
 	users = u;
 });
@@ -606,13 +606,14 @@ async function load() {
 			if(e.key == "Enter" && daynumber >= 5 && -matrix4.m41 === 2000 && matrix4.m43 === 700){
 				await Queue.fire({currentProgressStep: 0,text: "PLayground Entered! Find the clues to discover what happened."});
 		
-			 			var frame = document.createElement("iframe");
+				frame = document.createElement("iframe");
 				frame.src = "room.html";
 				frame.style.position = "absolute";
-				frame.style.zIndex = "100000";
+				iframe.style.transformStyle = "preserve-3d";
+				frame.style.zIndex = "1000000";
 				document.body.appendChild(frame)
 				while(!frame.contentWindow.end){
-					console.log("room playing.....")
+					console.log("room playing");
 				}
 				frame.remove();
 									await Queue.fire({currentProgressStep: 0,text: "Find Ronald and click him to get the key!"}); 		
