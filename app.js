@@ -128,7 +128,7 @@ async function lose(){
 	}
 }
 async function battle(){
-	await Queue.fire({currentProgressStep: 0,text: "Click the hunter to do damage. Quick!"});
+	await Queue.fire({currentProgressStep: 0,text: "Click Ronald to do damage. Quick!"});
 	
 	document.getElementById("hunter").onclick = async () => {
 		clicks++;
