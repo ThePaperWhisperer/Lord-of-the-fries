@@ -200,23 +200,16 @@ var deer = new Image(200, 200);
 deer.hidden = true;
 			document.body.appendChild(deer);
 async function hunt() {
-		if(daynumber < 3){
 		await Queue.fire({currentProgressStep: 0,text: "Click to get the fries in time."});
 			deer.hidden = false;
 			deer.addEventListener("click", foodget);
 		
 		setTimeout(async () => {
 			deer.removeEventListener("click", foodget);
-			await Queue.fire({currentProgressStep: 0,text: "You have " + food + " food. Every day, ten food will be used."});
+			await Queue.fire({currentProgressStep: 0,text: "You have " + food + " fries. Every day, ten fries will be used for you."});
 			deer.hidden = true;
 		}, 5000);
-	}
-		else{
-			if(Math.floor(Math.random() * 5) === 2){
-						await Queue.fire({currentProgressStep: 0,text: "Edible mushroom found! Each one will count as 4 food."});
-				
-						food += 4;
-					}
+	
 		}
 	}
 async function choose() {
