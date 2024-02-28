@@ -435,6 +435,7 @@ async function move(){
 	document.getElementById("universe").style.transform = "translate3d(" + b + "px, " + y + "px, " + a + "px) perspective(" + ( a +5000) + "px)";
 }
 async function load() {
+	document.body.style.background = "black";
 	document.querySelector("#bg").play();
 	setTimeout(burglar, 3000);
 	document.getElementById("universe").style.position = "absolute";
