@@ -435,11 +435,9 @@ async function move(){
 	document.getElementById("universe").style.transform = "translate3d(" + b + "px, " + y + "px, " + a + "px) perspective(" + ( a +5000) + "px)";
 }
 async function load() {
-		document.body.style.backgroundImage = "url(bg.png)";
 	document.querySelector("#bg").play();
 	setTimeout(burglar, 3000);
 	document.getElementById("universe").style.position = "absolute";
-	document.getElementById("universe").style.zIndex = "1";
 	timeout = setTimeout(time, 90000);
 	document.getElementById("heli").pause();
 	document.getElementById("boom").play();
