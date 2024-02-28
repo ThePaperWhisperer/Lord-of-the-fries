@@ -653,7 +653,7 @@ async function load() {
 			if(e.key == "w"){
 				e.preventDefault();
 				dragy-=10;
-				var draggable = $("iframe").draggable(),
+				var draggable = $("iframe").draggable();
 
   draggable.simulate("drag", {
     dx: dragx,
@@ -664,7 +664,7 @@ async function load() {
 			if(e.key == "a"){
 				e.preventDefault();
 				dragx-=10;
-				var draggable = $("iframe").draggable(),
+				var draggable = $("iframe").draggable();
 
   draggable.simulate("drag", {
     dx: dragx,
@@ -675,7 +675,7 @@ async function load() {
 			if(e.key == "s"){
 				e.preventDefault();
 				dragy+=10;
-				var draggable = $("iframe").draggable(),
+				var draggable = $("iframe").draggable();
 
   draggable.simulate("drag", {
     dx: dragx,
@@ -686,7 +686,7 @@ async function load() {
 			if(e.key == "w"){
 				e.preventDefault();
 				dragx+=10;
-				var draggable = $("iframe").draggable(),
+				var draggable = $("iframe").draggable();
 
   draggable.simulate("drag", {
     dx: dragx,
