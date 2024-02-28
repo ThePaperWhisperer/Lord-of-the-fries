@@ -10,7 +10,10 @@
 	h1{
 		
 	}
-
+iframe{
+	position: absolute;
+	z-index: 7;
+}
 	#soldier{
 		position: absolute;
 		height: 300px;
