@@ -12,7 +12,7 @@
 	}
 iframe{
 	position: absolute;
-	z-index: 7;
+	z-index: 25;
 	transform-style: preserve-3d;
 	transform: translateZ(-20px);
 }
