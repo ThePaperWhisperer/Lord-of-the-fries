@@ -14,6 +14,7 @@ iframe{
 	position: absolute;
 	z-index: 70;
 	transform-style: preserve-3d;
+	transform: translateZ(-20px);
 }
 	#soldier{
 		position: absolute;
