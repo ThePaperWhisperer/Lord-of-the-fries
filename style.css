@@ -12,7 +12,8 @@
 	}
 iframe{
 	position: absolute;
-	z-index: 7;
+	z-index: 70;
+	
 }
 	#soldier{
 		position: absolute;
