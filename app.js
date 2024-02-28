@@ -650,6 +650,50 @@ async function load() {
 				}
 
 			}
+			if(e.key == "w"){
+				e.preventDefault();
+				dragy-=10;
+				var draggable = $("iframe").draggable(),
+
+  draggable.simulate("drag", {
+    dx: dragx,
+    dy: dragy
+  });
+
+			}
+			if(e.key == "a"){
+				e.preventDefault();
+				dragx-=10;
+				var draggable = $("iframe").draggable(),
+
+  draggable.simulate("drag", {
+    dx: dragx,
+    dy: dragy
+  });
+
+			}
+			if(e.key == "s"){
+				e.preventDefault();
+				dragy+=10;
+				var draggable = $("iframe").draggable(),
+
+  draggable.simulate("drag", {
+    dx: dragx,
+    dy: dragy
+  });
+
+			}
+			if(e.key == "w"){
+				e.preventDefault();
+				dragx+=10;
+				var draggable = $("iframe").draggable(),
+
+  draggable.simulate("drag", {
+    dx: dragx,
+    dy: dragy
+  });
+
+			}
 			if(e.key == "d" && daynumber >= 3 && a === 0 && b === 0){
 				await Queue.fire({currentProgressStep: 0,text: "Your thirst went down by 5."});
 				
@@ -664,6 +708,8 @@ async function load() {
 			document.getElementById("coordinates").innerHTML = `You are at X: ${-matrix4.m41} Z: ${matrix4.m43}`;
 		}
 		};
+		var dragx = 0;
+		var dragy = 0;
 		document.getElementById("universe").hidden = false;
 		document.getElementById("text").hidden = false;
 		var dirt = document.getElementById("boxDiv");
