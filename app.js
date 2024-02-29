@@ -675,7 +675,7 @@ const mouseUpEvent = new MouseEvent('mouseup', {
 				element.dispatchEvent(mouseDownEvent);
 
 // For mousemove, the listener may be the parent or even the document
-<element|document>.dispatchEvent(mouseMoveEvent);
+element.dispatchEvent(mouseMoveEvent);
 
 // Dispatch mouseup to terminate the process
 element.dispatchEvent(mouseUpEvent);
@@ -706,7 +706,7 @@ const mouseUpEvent = new MouseEvent('mouseup', {
 				element.dispatchEvent(mouseDownEvent);
 
 // For mousemove, the listener may be the parent or even the document
-<element|document>.dispatchEvent(mouseMoveEvent);
+element.dispatchEvent(mouseMoveEvent);
 
 // Dispatch mouseup to terminate the process
 element.dispatchEvent(mouseUpEvent);
@@ -737,7 +737,7 @@ const mouseUpEvent = new MouseEvent('mouseup', {
 				element.dispatchEvent(mouseDownEvent);
 
 // For mousemove, the listener may be the parent or even the document
-<element|document>.dispatchEvent(mouseMoveEvent);
+element.dispatchEvent(mouseMoveEvent);
 
 // Dispatch mouseup to terminate the process
 element.dispatchEvent(mouseUpEvent);
@@ -768,7 +768,7 @@ const mouseUpEvent = new MouseEvent('mouseup', {
 				element.dispatchEvent(mouseDownEvent);
 
 // For mousemove, the listener may be the parent or even the document
-<element|document>.dispatchEvent(mouseMoveEvent);
+element.dispatchEvent(mouseMoveEvent);
 
 // Dispatch mouseup to terminate the process
 element.dispatchEvent(mouseUpEvent);
