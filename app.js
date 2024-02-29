@@ -594,10 +594,9 @@ async function load() {
 				shelter.style.position = "absolute";
 				shelter.style.zIndex = "80";
 				shelter.src = "shack.glb";
-				shelter.style.left = "200px";
-				shelter.style.top = "200px";
-				shelter.style.height = "50vh";
-				shelter.style.width = "50vw";
+				shelter.style.top = "70vh";
+				shelter.style.height = "100vh";
+				shelter.style.width = "100vw";
 				shelter.style.transform = "translate3d(" + b + "px, " + y + "px, " + a + "px) perspective(" + 5000 + "px)";
 				document.getElementById("universe").appendChild(shelter);
 				sheltermatrix = new WebKitCSSMatrix(window.getComputedStyle(shelter).transform);
