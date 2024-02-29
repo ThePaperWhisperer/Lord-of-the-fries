@@ -442,7 +442,7 @@ async function load() {
 	timeout = setTimeout(time, 90000);
 	document.getElementById("heli").pause();
 	document.getElementById("boom").play();
-	day.innerHTML = "Day " + daynumber + ". Use arrow keys to move and  space to search for resources.";
+	day.innerHTML = "Day " + daynumber + ". Use the WASD keys to look around, the arrows up and down to move, and space to search for resources.";
 	day.style.color = "white";
 	day.style.position = "absolute";
 	day.style.zIndex = "140";
@@ -456,7 +456,7 @@ async function load() {
 			wood.setAttribute("id", i);
 			wood.style.position = "absolute";
 			wood.style.transformStyle = "preserve-3d";
-			wood.style.transform = "translate3d(" + (50 * Math.floor(Math.random() * 10)) + "px, 0px, " + (50 * Math.floor(Math.random() * 10)) + "px) perspective(600px)";
+			wood.style.transform = "translate3d(" + (10 * Math.floor(Math.random() * 10)) + "px, 0px, " + (10 * Math.floor(Math.random() * 10)) + "px) perspective(600px)";
 			document.body.appendChild(wood);
 		}
 		day.hidden = true;
@@ -501,14 +501,7 @@ async function load() {
 				e.preventDefault();
 				a -= 50;
 			}
-			if (e.key == "ArrowRight") {
-				e.preventDefault();
-				b -= 50;
-			}
-			if (e.key == "ArrowLeft") {
-				e.preventDefault();
-				b += 50;
-			}
+			
 			if(e.key == "x" && task.value === 0 && daynumber >= 2){
 				fire.style.position = "absolute";
 				fire.style.transform = "translate3d(" + b + "px, " + y + "px,"+ a +"px) perspective(" + 5000 + "px)";
@@ -532,7 +525,7 @@ async function load() {
 			}
 			if (e.key == " ") {
 				
-				if (-matrix4.m41 === wood1.m41 && matrix4.m43 === wood1.m43) {
+				if (dragx === wood1.m41 && matrix4.m43 === wood1.m43) {
 					await Queue.fire({currentProgressStep: 0,text: "Wood found!"});
 					
 					task.value--;
@@ -543,7 +536,7 @@ async function load() {
 						house = true;
 					}
 				}
-				if (-matrix4.m41 === wood2.m41 && matrix4.m43 === wood2.m43) {
+				if (dragx === wood2.m41 && matrix4.m43 === wood2.m43) {
 					await Queue.fire({currentProgressStep: 0,text: "Wood found!"});
 					
 					task.value--;
@@ -554,7 +547,7 @@ async function load() {
 						house = true;
 					}
 				}
-				if (-matrix4.m41 === wood3.m41 && matrix4.m43 === wood3.m43) {
+				if (dragx === wood3.m41 && matrix4.m43 === wood3.m43) {
 					await Queue.fire({currentProgressStep: 0,text: "Wood found!"});
 					
 					task.value--;
@@ -565,7 +558,7 @@ async function load() {
 						house = true;
 					}
 				}
-				if (-matrix4.m41 === wood4.m41 && matrix4.m43 === wood4.m43) {
+				if (dragx === wood4.m41 && matrix4.m43 === wood4.m43) {
 					await Queue.fire({currentProgressStep: 0,text: "Wood found!"});
 					
 					task.value--;
@@ -576,7 +569,7 @@ async function load() {
 						house = true;
 					}
 				}
-				if (-matrix4.m41 === wood5.m41 && matrix4.m43 === wood5.m43) {
+				if (dragx === wood5.m41 && matrix4.m43 === wood5.m43) {
 					await Queue.fire({currentProgressStep: 0,text: "Wood found!"});
 					
 					task.value--;
