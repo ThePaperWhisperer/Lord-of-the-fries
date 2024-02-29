@@ -434,8 +434,8 @@ clearTimeout(timeout)
 
 var rot = 0;
 async function move(){
-	document.getElementById("universe").style.transform = "rotateX("+dragy/2 +"deg) rotateY("+ dragx/2+"deg)";
-	document.body.style.transform = "translate3d(" + b + "px, " + y + "px, " + a + "px) perspective(" + ( a +5000) + "px)"
+	document.getElementById("universe").style.transform = "translate3d(" + b + "px, " + y + "px, " + a + "px) perspective(" + ( a +5000) + "px) rotateX("+dragy/2 +"deg) rotateY("+ dragx/2+"deg)"
+	document.querySelector("iframe").style.transform = "translate3d(" + b + "px, " + y + "px, " + a + "px) perspective(" + ( a +5000) + "px)"
 }
 async function load() {
 	document.body.style.background = "black";
@@ -784,7 +784,7 @@ move()
 			}
 			move();
 			matrix4 = new WebKitCSSMatrix(
-				window.getComputedStyle(document.body).transform
+				window.getComputedStyle(document.getElementById("universe")).transform
 			);
 			sol1 = document.getElementById("panther");
 			socket.emit("move", matrix4);
