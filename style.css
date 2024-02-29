@@ -203,7 +203,7 @@ iframe{
 
 	#universe {
 		z-index: 1;
-		transform-origin: -2500px 0px;
+		transform-origin: 0px 0px;
 		position: absolute;
 		perspective: 5000px;
 		}
