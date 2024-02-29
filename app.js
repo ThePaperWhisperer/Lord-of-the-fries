@@ -652,7 +652,7 @@ async function load() {
 			}
 			if(e.key == "w"){
 				e.preventDefault();
-				var element = document.querySelector("iframe")
+				var element = document.querySelector("iframe").contentWindow.document;
 				const mouseDownEvent = new MouseEvent('mousedown', {
   clientX: element.getBoundingClientRect().left+ dragx,
   clientY: element.getBoundingClientRect().top + dragy,
@@ -683,7 +683,7 @@ element.dispatchEvent(mouseUpEvent);
 			}
 			if(e.key == "a"){
 				e.preventDefault();
-				var element = document.querySelector("iframe")
+				var element = document.querySelector("iframe").contentWindow.document;
 				const mouseDownEvent = new MouseEvent('mousedown', {
   clientX: element.getBoundingClientRect().left+ dragx,
   clientY: element.getBoundingClientRect().top + dragy,
@@ -714,7 +714,7 @@ element.dispatchEvent(mouseUpEvent);
 			}
 			if(e.key == "s"){
 				e.preventDefault();
-				var element = document.querySelector("iframe")
+				var element = document.querySelector("iframe").contentWindow.document;
 				const mouseDownEvent = new MouseEvent('mousedown', {
   clientX: element.getBoundingClientRect().left+ dragx,
   clientY: element.getBoundingClientRect().top + dragy,
@@ -745,7 +745,7 @@ element.dispatchEvent(mouseUpEvent);
 			}
 			if(e.key == "d"){
 				e.preventDefault();
-				var element = document.querySelector("iframe")
+				var element = document.querySelector("iframe").contentWindow.document;
 				const mouseDownEvent = new MouseEvent('mousedown', {
   clientX: element.getBoundingClientRect().left+ dragx,
   clientY: element.getBoundingClientRect().top + dragy,
