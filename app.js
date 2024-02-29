@@ -597,7 +597,7 @@ async function load() {
 				shelter.style.left = "200px";
 				shelter.style.top = "200px";
 				shelter.style.height = "50vh";
-				shelter.stule.width = "50vw";
+				shelter.style.width = "50vw";
 				shelter.style.transform = "translate3d(" + b + "px, " + y + "px, " + a + "px) perspective(" + 5000 + "px)";
 				document.getElementById("universe").appendChild(shelter);
 				sheltermatrix = new WebKitCSSMatrix(window.getComputedStyle(shelter).transform);
