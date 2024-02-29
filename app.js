@@ -118,7 +118,9 @@ async function burglar(){
 }
 async function check(fram){
 	if(!fram.contentWindow.end){
-		setTimeout(check, 3000);
+		setTimeout(()=> {
+			check(fram)
+		}, 3000);
 				}
 	else{
 				fram.remove();
