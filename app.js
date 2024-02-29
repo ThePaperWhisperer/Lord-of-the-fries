@@ -412,11 +412,11 @@ clearTimeout(timeout)
 													 universe.hidden = false;
 												 }, 5000)
 		if(daynumber >= 5){
-			day.innerHTML = "Day " + daynumber + ". look for an abandoned playground near(400, 70).";
+			day.innerHTML = "Day " + daynumber + ". look for an abandoned playground near(400, 50).";
 			
 			model.style.height = "1500px";
 			model.style.width = "1500px"
-			document.getElementById("modeldiv").style.transform = "translate3d(0px, 0px, 70px) ";
+			document.getElementById("modeldiv").style.transform = "translate3d(0px, 0px, 50px) ";
 			document.getElementById("modeldiv").style.zIndex = "100000";
 			document.getElementById("modeldiv").style.position = "absolute";
 			document.getElementById("modeldiv").style.transformStyle = "preserve-3d";			
@@ -459,7 +459,7 @@ async function load() {
 			wood.setAttribute("id", i);
 			wood.style.position = "absolute";
 			wood.style.transformStyle = "preserve-3d";
-			wood.style.transform = "translate3d(" + (50 * Math.floor(Math.random() * 10)) + "px, 0px, " + (10 * Math.floor(Math.random() * 10)) + "px) perspective(600px)";
+			wood.style.transform = "translate3d(" + (50 * Math.floor(Math.random() * 10)) + "px, 0px, " + (50 * Math.floor(Math.random() * 10)) + "px) perspective(600px)";
 			document.body.appendChild(wood);
 		}
 		day.hidden = true;
@@ -498,12 +498,12 @@ async function load() {
 			}
 			if (e.key == "ArrowUp") {
 				e.preventDefault();
-				a += 10;
+				a += 50;
 			}
 			if (e.key == "ArrowDown") {
 				e.preventDefault();
 				if(a > 10){
-				a -= 10;
+				a -= 50;
 				}
 			}
 			
@@ -612,7 +612,7 @@ async function load() {
 			}
 
 
-			if(e.key == "Enter" && daynumber >= 5 && dragx === 400 && matrix4.m43 === 70){
+			if(e.key == "Enter" && daynumber >= 5 && dragx === 400 && matrix4.m43 === 50){
 				await Queue.fire({currentProgressStep: 0,text: "Playground Entered! Find the clues to discover what happened."});
 		
 				frame = document.createElement("iframe");
