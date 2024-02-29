@@ -784,7 +784,7 @@ move()
 			}
 			move();
 			matrix4 = new WebKitCSSMatrix(
-				window.getComputedStyle(document.getElementById("universe")).transform
+				window.getComputedStyle(document.body).transform
 			);
 			sol1 = document.getElementById("panther");
 			socket.emit("move", matrix4);
