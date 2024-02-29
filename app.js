@@ -652,48 +652,129 @@ async function load() {
 			}
 			if(e.key == "w"){
 				e.preventDefault();
+				var element = document.querySelector("iframe")
+				const mouseDownEvent = new MouseEvent('mousedown', {
+  clientX: element.getBoundingClientRect().left+ dragx,
+  clientY: element.getBoundingClientRect().top + dragy,
+  bubbles: true,
+  cancelable: true
+});
 				dragy-=10;
-				var draggable = $("iframe").draggable();
 
-  draggable.simulate("drag", {
-    dx: dragx,
-    dy: dragy
-  });
+const mouseMoveEvent = new MouseEvent('mousemove', {
+  clientX: element.getBoundingClientRect().left + dragx,
+  clientY: element.getBoundingClientRect().top + dragy,
+  bubbles: true,
+  cancelable: true
+});
+
+const mouseUpEvent = new MouseEvent('mouseup', {
+  bubbles: true,
+  cancelable: true
+});
+				element.dispatchEvent(mouseDownEvent);
+
+// For mousemove, the listener may be the parent or even the document
+<element|document>.dispatchEvent(mouseMoveEvent);
+
+// Dispatch mouseup to terminate the process
+element.dispatchEvent(mouseUpEvent);
 
 			}
 			if(e.key == "a"){
 				e.preventDefault();
+				var element = document.querySelector("iframe")
+				const mouseDownEvent = new MouseEvent('mousedown', {
+  clientX: element.getBoundingClientRect().left+ dragx,
+  clientY: element.getBoundingClientRect().top + dragy,
+  bubbles: true,
+  cancelable: true
+});
 				dragx-=10;
-				var draggable = $("iframe").draggable();
 
-  draggable.simulate("drag", {
-    dx: dragx,
-    dy: dragy
-  });
+const mouseMoveEvent = new MouseEvent('mousemove', {
+  clientX: element.getBoundingClientRect().left + dragx,
+  clientY: element.getBoundingClientRect().top + dragy,
+  bubbles: true,
+  cancelable: true
+});
+
+const mouseUpEvent = new MouseEvent('mouseup', {
+  bubbles: true,
+  cancelable: true
+});
+				element.dispatchEvent(mouseDownEvent);
+
+// For mousemove, the listener may be the parent or even the document
+<element|document>.dispatchEvent(mouseMoveEvent);
+
+// Dispatch mouseup to terminate the process
+element.dispatchEvent(mouseUpEvent);
 
 			}
 			if(e.key == "s"){
 				e.preventDefault();
+				var element = document.querySelector("iframe")
+				const mouseDownEvent = new MouseEvent('mousedown', {
+  clientX: element.getBoundingClientRect().left+ dragx,
+  clientY: element.getBoundingClientRect().top + dragy,
+  bubbles: true,
+  cancelable: true
+});
 				dragy+=10;
-				var draggable = $("iframe").draggable();
 
-  draggable.simulate("drag", {
-    dx: dragx,
-    dy: dragy
-  });
+const mouseMoveEvent = new MouseEvent('mousemove', {
+  clientX: element.getBoundingClientRect().left + dragx,
+  clientY: element.getBoundingClientRect().top + dragy,
+  bubbles: true,
+  cancelable: true
+});
+
+const mouseUpEvent = new MouseEvent('mouseup', {
+  bubbles: true,
+  cancelable: true
+});
+				element.dispatchEvent(mouseDownEvent);
+
+// For mousemove, the listener may be the parent or even the document
+<element|document>.dispatchEvent(mouseMoveEvent);
+
+// Dispatch mouseup to terminate the process
+element.dispatchEvent(mouseUpEvent);
 
 			}
-			if(e.key == "w"){
+			if(e.key == "d"){
 				e.preventDefault();
+				var element = document.querySelector("iframe")
+				const mouseDownEvent = new MouseEvent('mousedown', {
+  clientX: element.getBoundingClientRect().left+ dragx,
+  clientY: element.getBoundingClientRect().top + dragy,
+  bubbles: true,
+  cancelable: true
+});
 				dragx+=10;
-				var draggable = $("iframe").draggable();
 
-  draggable.simulate("drag", {
-    dx: dragx,
-    dy: dragy
-  });
+const mouseMoveEvent = new MouseEvent('mousemove', {
+  clientX: element.getBoundingClientRect().left + dragx,
+  clientY: element.getBoundingClientRect().top + dragy,
+  bubbles: true,
+  cancelable: true
+});
+
+const mouseUpEvent = new MouseEvent('mouseup', {
+  bubbles: true,
+  cancelable: true
+});
+				element.dispatchEvent(mouseDownEvent);
+
+// For mousemove, the listener may be the parent or even the document
+<element|document>.dispatchEvent(mouseMoveEvent);
+
+// Dispatch mouseup to terminate the process
+element.dispatchEvent(mouseUpEvent);
 
 			}
+			
 			if(e.key == "d" && daynumber >= 3 && a === 0 && b === 0){
 				await Queue.fire({currentProgressStep: 0,text: "Your thirst went down by 5."});
 				
