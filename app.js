@@ -594,7 +594,7 @@ async function load() {
 				shelter = document.createElement("model-viewer");
 				shelter.style.position = "absolute";
 				shelter.style.zIndex = "80";
-				shelter.src = "tent.fbx";
+				shelter.src = "tent.glb";
 				shelter.style.height = "100vh";
 				shelter.style.width = "100vw";
 				shelter.style.transformStyle = "preserve-3d";
