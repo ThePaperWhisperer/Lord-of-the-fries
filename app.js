@@ -2,6 +2,7 @@ var house = false;
 var task = document.getElementById("enemyhealth");
 var tasks = document.getElementById("tasks");
 var x;
+var inroom = false;
 var modals = [];
 var firematrix;
 var esc = false, parts = 0;
@@ -368,7 +369,7 @@ var wood5;
 var model = document.getElementById("model");
 async function time(){
 clearTimeout(timeout)
-	if(night == false){
+	if(night == false && !inroom){
 		document.getElementById("night").style.opacity = "60%";
 			await Queue.fire({currentProgressStep: 0,text: "It is night time. Go run around riskingly, or sleep safely in your shelter"});
 		night = true;
@@ -623,7 +624,7 @@ async function load() {
 
 			if(e.key == "Enter" && daynumber >= 5 && dragx === 0 && matrix4.m43 === 50){
 				await Queue.fire({currentProgressStep: 0,text: "Playground Entered! Find the clues to discover what happened."});
-		
+				inroom = true;
 				frame = document.createElement("iframe");
 				frame.src = "room.html";
 				frame.style.position = "absolute";
@@ -667,7 +668,8 @@ async function load() {
   bubbles: true,
   cancelable: true
 });
-				dragy-=50;
+				
+				if (dragy >500) dragy-=50;
 
 const mouseMoveEvent = new MouseEvent('mousemove', {
   clientX: element.getBoundingClientRect().left + dragx,
@@ -699,7 +701,7 @@ move()
   bubbles: true,
   cancelable: true
 });
-				dragx-=50;
+				if (dragx>-500) dragx-=50;
 
 const mouseMoveEvent = new MouseEvent('mousemove', {
   clientX: element.getBoundingClientRect().left + dragx,
@@ -731,7 +733,7 @@ move()
   bubbles: true,
   cancelable: true
 });
-				dragy+=50;
+				if (dragy <500) dragy+=50;
 
 const mouseMoveEvent = new MouseEvent('mousemove', {
   clientX: element.getBoundingClientRect().left + dragx,
@@ -763,7 +765,7 @@ move()
   bubbles: true,
   cancelable: true
 });
-				dragx+=50;
+				if (dragx <500) dragx+=50;
 
 const mouseMoveEvent = new MouseEvent('mousemove', {
   clientX: element.getBoundingClientRect().left + dragx,
