@@ -683,7 +683,7 @@ element.dispatchEvent(mouseUpEvent);
 			}
 			if(e.key == "a"){
 				e.preventDefault();
-				var element = document.querySelector("iframe").contentWindow.document..querySelectorAll("canvas")[1];
+				var element = document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[1];
 				const mouseDownEvent = new MouseEvent('mousedown', {
   clientX: element.getBoundingClientRect().left+ dragx,
   clientY: element.getBoundingClientRect().top + dragy,
@@ -714,7 +714,7 @@ element.dispatchEvent(mouseUpEvent);
 			}
 			if(e.key == "s"){
 				e.preventDefault();
-				var element = document.querySelector("iframe").contentWindow.document..querySelectorAll("canvas")[1];
+				var element = document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[1];
 				const mouseDownEvent = new MouseEvent('mousedown', {
   clientX: element.getBoundingClientRect().left+ dragx,
   clientY: element.getBoundingClientRect().top + dragy,
