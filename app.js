@@ -392,7 +392,7 @@ clearTimeout(timeout)
 			laketrix = new WebKitCSSMatrix(window.getComputedStyle(lake).transform);
 		}
 		if(daynumber >= 3){
-			day.innerHTML = "Day " + daynumber + ". Keep your stats in check. Now, water is a factor. Find the sink at (0, 0), then press D to drink.";
+			day.innerHTML = "Day " + daynumber + ". Keep your stats in check. Now, water is a factor. Find the sink at (0, 0), then press R to drink.";
 		}
 		if(daynumber > 3){
 			thirst += 10;
@@ -590,10 +590,10 @@ async function load() {
 			if (e.key == "x" && house == true) {
 				await Queue.fire({currentProgressStep: 0,text: "House built!"});
 				house = false;
-				shelter = document.createElement("img");
+				shelter = document.createElement("model-viewer");
 				shelter.style.position = "absolute";
 				shelter.style.zIndex = "80";
-				shelter.src = "shack.png";
+				shelter.src = "shack.glb";
 				shelter.style.left = "200px";
 				shelter.style.top = "200px";
 				shelter.style.transform = "translate3d(" + b + "px, " + y + "px, " + a + "px) perspective(" + 5000 + "px)";
@@ -775,7 +775,7 @@ element.dispatchEvent(mouseUpEvent);
 move() 
 			}
 			
-			if(e.key == "d" && daynumber >= 3 && a === 0 && dragx === 0){
+			if(e.key == "r" && daynumber >= 3 && a === 0 && dragx === 0){
 				await Queue.fire({currentProgressStep: 0,text: "Your thirst went down by 5."});
 				
 				thirst -= 5;
