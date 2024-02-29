@@ -230,16 +230,19 @@ iframe{
 		position: relative;
 		font-size: 21pt;
 		background: green;
+		z-index: 100;
 	}
 	#no{
 		font-size: 21pt;
 		position: relative;
 		background: red;
+		z-index: 100;
 	}
 	#neither{
 		font-size: 25pt;
 		position: relative;
 		background: yellow;
+		z-index: 100;
 	}
 	
 	#dialog{
