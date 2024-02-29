@@ -144,13 +144,16 @@ async function battle(){
 	
 	document.getElementById("hunter").onclick = async () => {
 		clicks++;
-		if(clicks === 50){
-			await Queue.fire({currentProgressStep: 0,text: "Press 'k' to steal the key!"})
+		if(clicks >= 50){
+			
+			document.getElementById("hunter").hidden = "true";
+			setTimeout(()=> {
+				await Queue.fire({currentProgressStep: 0,text: "Press 'k' to steal the key!"})
+			})
 			
 			document.onkeydown = (e)=> {
 				if(e.key == "k"){
 					e.preventDefault();
-					document.body.style.backgroundImage = "ending.jpeg";
 					document.getElementById("heli").play();
 					setTimeout(async () => {
 					await Queue.fire({currentProgressStep: 0,text: "You escaped!"});
