@@ -592,7 +592,7 @@ async function load() {
 				house = false;
 				shelter = document.createElement("img");
 				shelter.style.position = "absolute";
-				shelter.style.zIndex = "8";
+				shelter.style.zIndex = "80";
 				shelter.src = "shack.png";
 				shelter.style.left = "200px";
 				shelter.style.top = "200px";
@@ -783,7 +783,7 @@ element.dispatchEvent(mouseUpEvent);
 			);
 			sol1 = document.getElementById("panther");
 			socket.emit("move", matrix4);
-			document.getElementById("coordinates").innerHTML = `You are at X: ${-matrix4.m41} Z: ${matrix4.m43}`;
+			document.getElementById("coordinates").innerHTML = `You are at X: ${dragx} Z: ${matrix4.m43}`;
 		}
 		};
 
