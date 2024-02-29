@@ -434,7 +434,8 @@ clearTimeout(timeout)
 
 var rot = 0;
 async function move(){
-	document.getElementById("universe").style.transform = "translate3d(" + b + "px, " + y + "px, " + a + "px) perspective(" + ( a +5000) + "px) rotateX("+dragy/2 +"deg) rotateY("+ dragx/2+"deg)";
+	document.getElementById("universe").style.transform = "rotateX("+dragy/2 +"deg) rotateY("+ dragx/2+"deg)";
+	document.body.style.transform = "translate3d(" + b + "px, " + y + "px, " + a + "px) perspective(" + ( a +5000) + "px)"
 }
 async function load() {
 	document.body.style.background = "black";
