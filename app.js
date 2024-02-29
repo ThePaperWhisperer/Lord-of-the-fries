@@ -149,18 +149,27 @@ async function battle(){
 			document.getElementById("hunter").hidden = true;
 			setTimeout(async ()=> {
 				await Queue.fire({currentProgressStep: 0,text: "Press 'k' to steal the key!"})
-			})
+			}, 5000)
 			
 			document.onkeydown = (e)=> {
 				if(e.key == "k"){
 					e.preventDefault();
 					document.getElementById("heli").play();
-					setTimeout(async () => {
-					await Queue.fire({currentProgressStep: 0,text: "You escaped!"});
+					var ending = document.createElement("video");
+					ending.style.position = "absolute";
+					ending.src = "ending.mp4";
+					ending.style.zIndex = "1000000000000000000";
+					document.body.appendChild(ending);
+					ending.onload = ()=> {
+						ending.play();
+					ending.onended = async ()=> {
+						await Queue.fire({currentProgressStep: 0,text: "You escaped!"});
 						socket.emit("escape", username)
 						
 						location.reload();
-					}, 7000)
+					}
+					}
+					
 				}
 			}
 			
