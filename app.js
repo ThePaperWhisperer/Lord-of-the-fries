@@ -594,7 +594,6 @@ async function load() {
 				shelter.style.position = "absolute";
 				shelter.style.zIndex = "80";
 				shelter.src = "shack.glb";
-				shelter.style.top = "70vh";
 				shelter.style.height = "100vh";
 				shelter.style.width = "100vw";
 				shelter.style.transform = "translate3d(" + b + "px, " + y + "px, " + a + "px) perspective(" + 5000 + "px)";
