@@ -146,7 +146,7 @@ async function battle(){
 		clicks++;
 		if(clicks >= 50){
 			
-			document.getElementById("hunter").hidden = "true";
+			document.getElementById("hunter").hidden = true;
 			setTimeout(async ()=> {
 				await Queue.fire({currentProgressStep: 0,text: "Press 'k' to steal the key!"})
 			})
