@@ -7,6 +7,8 @@ var firematrix;
 var esc = false, parts = 0;
 var timeout;
 var fire;
+		var dragx = 0;
+		var dragy = 0;
 var ss;
 var thirst = 0;
 const steps = ['1', '2', '3', "4"]
@@ -443,7 +445,7 @@ async function load() {
 	document.getElementById("heli").pause();
 	document.getElementById("boom").play();
 	day.innerHTML = "Day " + daynumber + ". Use the WASD keys to look around, the arrows up and down to move, and space to search for resources.";
-	day.style.color = "white";
+	day.style.color = "black";
 	day.style.position = "absolute";
 	day.style.zIndex = "140";
 	day.style.width = "50vw";
@@ -495,11 +497,13 @@ async function load() {
 			}
 			if (e.key == "ArrowUp") {
 				e.preventDefault();
-				a += 50;
+				a += 10;
 			}
 			if (e.key == "ArrowDown") {
 				e.preventDefault();
-				a -= 50;
+				if(a > 10){
+				a -= 10;
+				}
 			}
 			
 			if(e.key == "x" && task.value === 0 && daynumber >= 2){
@@ -606,8 +610,8 @@ async function load() {
 			}
 
 
-			if(e.key == "Enter" && daynumber >= 5 && -matrix4.m41 === 2000 && matrix4.m43 === 700){
-				await Queue.fire({currentProgressStep: 0,text: "PLayground Entered! Find the clues to discover what happened."});
+			if(e.key == "Enter" && daynumber >= 5 && dragx === 40 && matrix4.m43 === 70){
+				await Queue.fire({currentProgressStep: 0,text: "Playground Entered! Find the clues to discover what happened."});
 		
 				frame = document.createElement("iframe");
 				frame.src = "room.html";
@@ -782,8 +786,7 @@ element.dispatchEvent(mouseUpEvent);
 			document.getElementById("coordinates").innerHTML = `You are at X: ${-matrix4.m41} Z: ${matrix4.m43}`;
 		}
 		};
-		var dragx = 0;
-		var dragy = 0;
+
 		document.getElementById("universe").hidden = false;
 		document.getElementById("text").hidden = false;
 		var dirt = document.getElementById("boxDiv");
