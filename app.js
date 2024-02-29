@@ -116,12 +116,12 @@ async function burglar(){
 	setTimeout(burglar, 3000);
 	}
 }
-async function check(){
-	if(!frame.contentWindow.end){
+async function check(fram){
+	if(!fram.contentWindow.end){
 		setTimeout(check, 3000);
 				}
 	else{
-				frame.remove();
+				fram.remove();
 									await Queue.fire({currentProgressStep: 0,text: "Find Ronald and click him to get the key!"}); 		
 									document.getElementById("hunter").style.display = "block"; 						
 									battle();     					
@@ -630,7 +630,7 @@ async function load() {
 				frame.style.height = "100vh";
 				frame.style.width = "100vw";
 				document.body.appendChild(frame)
-				check();		
+				check(frame);		
 		}
 			
 			
