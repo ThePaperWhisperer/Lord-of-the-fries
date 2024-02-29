@@ -419,7 +419,7 @@ clearTimeout(timeout)
 													 universe.hidden = false;
 												 }, 5000)
 		if(daynumber >= 5){
-			day.innerHTML = "Day " + daynumber + ". look for an abandoned playground near(400, 50).";
+			day.innerHTML = "Day " + daynumber + ". look for an abandoned playground near(0, 50).";
 			
 			model.style.height = "1500px";
 			model.style.width = "1500px"
@@ -619,7 +619,7 @@ async function load() {
 			}
 
 
-			if(e.key == "Enter" && daynumber >= 5 && dragx === 400 && matrix4.m43 === 50){
+			if(e.key == "Enter" && daynumber >= 5 && dragx === 0 && matrix4.m43 === 50){
 				await Queue.fire({currentProgressStep: 0,text: "Playground Entered! Find the clues to discover what happened."});
 		
 				frame = document.createElement("iframe");
@@ -870,40 +870,35 @@ socket.on('newmessage', async (messagenew) => {
 	        const notification = new Notification(newmessage);
 
 });
+var shelter2, fire2;
 
 socket.on("firemade",async (player)=>{
 	await Queue.fire({currentProgressStep: 0,text: "Someone made a fire. It is at X: " + -player.m41 + ", Z: " + -player.m43});
-	fire.style.position = "absolute";
-				fire.style.transform = "translate3d(" + player.m41 + "px, " + player.m42 + "px, " + player.m43 + "px) perspective(" + (player.m43 + 5000) + "px)";
-				document.getElementById("universe").appendChild(fire);
-				firematrix = new WebKitCSSMatrix(getComputedStyle(fire).transform);
-				await Queue.fire({currentProgressStep: 1,text: "The fire will burn for half the day. Press x whenever you have enough wood and need to cook your food."});
+	fire2.style.position = "absolute";
+				fire2.style.transform = "translate3d(" + player.m41 + "px, " + player.m42 + "px, " + player.m43 + "px) perspective(" + (player.m43 + 5000) + "px)";
+				document.getElementById("universe").appendChild(fire2);
 	
 				task.value = 5;
 				task.max = 5;
 				setTimeout(async () => {
-					fire.remove();
+					fire2.remove();
 				}, 60000);
 })
 var cx, cy;
-
 
 socket.on("housemade", async(player)=>{
 	await Queue.fire({currentProgressStep: 0,text: "Someone made a house. It is at X: " + -player.m41 + ", Z: " + -player.m43});
 	
 	house = false;
-				shelter = document.createElement("img");
-				shelter.style.position = "absolute";
-				shelter.style.zIndex = "8";
-				shelter.src = "shack.png";
-				shelter.style.left = "200px";
-				shelter.style.top = "200px";
-				shelter.style.transform = "translate3d(" + player.m41 + "px, " + player.m42 + "px, " + player.m43 + "px) perspective(" + (player.m43 + 5000) + "px)";
-				document.getElementById("universe").appendChild(shelter);
-				sheltermatrix = new WebKitCSSMatrix(window.getComputedStyle(shelter).transform);
-				await Queue.fire({currentProgressStep: 1,text: "Hint: If you ENTER your house, you have double your health."});
+				shelter2 = document.createElement("img");
+				shelter2.style.position = "absolute";
+				shelter2.style.zIndex = "8";
+				shelter2.src = "shack.png";
+				shelter2.style.left = "200px";
+				shelter2.style.top = "200px";
+				shelter2.style.transform = "translate3d(" + player.m41 + "px, " + player.m42 + "px, " + player.m43 + "px) perspective(" + (player.m43 + 5000) + "px)";
+				document.getElementById("universe").appendChild(shelter2);
 				tasks.innerHTML = "Find food";
-				await Queue.fire({currentProgressStep: 2,text: "Go bring some food back home. Go hunting for food in a space by pressing 'h'."});
 	
 })
  async function notifyMe() {
