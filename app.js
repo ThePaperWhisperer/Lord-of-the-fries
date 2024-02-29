@@ -434,7 +434,7 @@ clearTimeout(timeout)
 
 var rot = 0;
 async function move(){
-	document.getElementById("universe").style.transform = "translate3d(" + b + "px, " + y + "px, " + a + "px) perspective(" + ( a +5000) + "px)";
+	document.getElementById("universe").style.transform = "translate3d(" + b + "px, " + y + "px, " + a + "px) perspective(" + ( a +5000) + "px) rotateX("+dragy/2 +"deg) rotateY("+ dragx/2+"deg)";
 }
 async function load() {
 	document.body.style.background = "black";
@@ -676,7 +676,7 @@ element.dispatchEvent(mouseMoveEvent);
 
 // Dispatch mouseup to terminate the process
 element.dispatchEvent(mouseUpEvent);
-document.getElementById("universe").style.rotate = `x ${dragy/2}deg y ${dragx/2}deg`; 
+move() 
 
 			}
 			if(e.key == "a"){
@@ -708,7 +708,7 @@ element.dispatchEvent(mouseMoveEvent);
 
 // Dispatch mouseup to terminate the process
 element.dispatchEvent(mouseUpEvent);
-document.getElementById("universe").style.rotate = `x ${dragy/2}deg y ${dragx/2}deg`; 
+move() 
 
 			}
 			if(e.key == "s"){
@@ -740,7 +740,7 @@ element.dispatchEvent(mouseMoveEvent);
 
 // Dispatch mouseup to terminate the process
 element.dispatchEvent(mouseUpEvent);
-document.getElementById("universe").style.rotate = `x ${dragy/2}deg y ${dragx/2}deg`; 
+move() 
 
 			}
 			if(e.key == "d"){
@@ -772,7 +772,7 @@ element.dispatchEvent(mouseMoveEvent);
 
 // Dispatch mouseup to terminate the process
 element.dispatchEvent(mouseUpEvent);
-document.getElementById("universe").style.rotate = `x ${dragy/2}deg y ${dragx/2}deg`; 
+move() 
 			}
 			
 			if(e.key == "d" && daynumber >= 3 && a === 0 && dragx === 0){
