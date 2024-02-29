@@ -412,11 +412,11 @@ clearTimeout(timeout)
 													 universe.hidden = false;
 												 }, 5000)
 		if(daynumber >= 5){
-			day.innerHTML = "Day " + daynumber + ". look for an abandoned playground near (2000, 700).";
+			day.innerHTML = "Day " + daynumber + ". look for an abandoned playground near(40, 70).";
 			
 			model.style.height = "1500px";
 			model.style.width = "1500px"
-			document.getElementById("modeldiv").style.transform = "translate3d(2000px, 0px, 700px) ";
+			document.getElementById("modeldiv").style.transform = "translate3d(0px, 0px, 70px) ";
 			document.getElementById("modeldiv").style.zIndex = "100000";
 			document.getElementById("modeldiv").style.position = "absolute";
 			document.getElementById("modeldiv").style.transformStyle = "preserve-3d";			
@@ -772,7 +772,7 @@ element.dispatchEvent(mouseUpEvent);
 
 			}
 			
-			if(e.key == "d" && daynumber >= 3 && a === 0 && b === 0){
+			if(e.key == "d" && daynumber >= 3 && a === 0 && dragx === 0){
 				await Queue.fire({currentProgressStep: 0,text: "Your thirst went down by 5."});
 				
 				thirst -= 5;
