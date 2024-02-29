@@ -676,7 +676,7 @@ element.dispatchEvent(mouseMoveEvent);
 
 // Dispatch mouseup to terminate the process
 element.dispatchEvent(mouseUpEvent);
-document.getElementById("universe").style.rotate = `${dragy/10} ${dragx/10} 0 5deg`; 
+document.getElementById("universe").style.rotate = `x ${dragy/2}deg y ${dragx/2}deg`; 
 
 			}
 			if(e.key == "a"){
@@ -708,7 +708,7 @@ element.dispatchEvent(mouseMoveEvent);
 
 // Dispatch mouseup to terminate the process
 element.dispatchEvent(mouseUpEvent);
-document.getElementById("universe").style.rotate = `${dragy/10} ${dragx/10} 0 5deg`; 
+document.getElementById("universe").style.rotate = `x ${dragy/2}deg y ${dragx/2}deg`; 
 
 			}
 			if(e.key == "s"){
@@ -740,7 +740,7 @@ element.dispatchEvent(mouseMoveEvent);
 
 // Dispatch mouseup to terminate the process
 element.dispatchEvent(mouseUpEvent);
-document.getElementById("universe").style.rotate = `${dragy/10} ${dragx/10} 0 5deg`; 
+document.getElementById("universe").style.rotate = `x ${dragy/2}deg y ${dragx/2}deg`; 
 
 			}
 			if(e.key == "d"){
@@ -772,7 +772,7 @@ element.dispatchEvent(mouseMoveEvent);
 
 // Dispatch mouseup to terminate the process
 element.dispatchEvent(mouseUpEvent);
-document.getElementById("universe").style.rotate = `${dragy/10} ${dragx/10} 0 5deg`; 
+document.getElementById("universe").style.rotate = `x ${dragy/2}deg y ${dragx/2}deg`; 
 			}
 			
 			if(e.key == "d" && daynumber >= 3 && a === 0 && dragx === 0){
