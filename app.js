@@ -702,7 +702,7 @@ move()
   bubbles: true,
   cancelable: true
 });
-				if (dragx>-3000) dragx-=50;
+				if (dragx<3000) dragx+=50;
 
 const mouseMoveEvent = new MouseEvent('mousemove', {
   clientX: element.getBoundingClientRect().left + dragx,
@@ -766,7 +766,7 @@ move()
   bubbles: true,
   cancelable: true
 });
-				if (dragx <3000) dragx+=50;
+				if (dragx >-3000) dragx-=50;
 
 const mouseMoveEvent = new MouseEvent('mousemove', {
   clientX: element.getBoundingClientRect().left + dragx,
