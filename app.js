@@ -669,7 +669,7 @@ async function load() {
   cancelable: true
 });
 				
-				if (dragy >500) dragy-=50;
+				if (dragy <500) dragy-=50;
 
 const mouseMoveEvent = new MouseEvent('mousemove', {
   clientX: element.getBoundingClientRect().left + dragx,
