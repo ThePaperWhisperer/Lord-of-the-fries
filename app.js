@@ -541,7 +541,7 @@ async function load() {
 			}
 			if (e.key == " ") {
 				
-				if (dragx === wood1.m41 && matrix4.m43 === wood1.m43) {
+				if (-dragx === wood1.m41 && matrix4.m43 === wood1.m43) {
 					await Queue.fire({currentProgressStep: 0,text: "Wood found!"});
 					
 					task.value--;
@@ -552,7 +552,7 @@ async function load() {
 						house = true;
 					}
 				}
-				if (dragx === wood2.m41 && matrix4.m43 === wood2.m43) {
+				if (-dragx === wood2.m41 && matrix4.m43 === wood2.m43) {
 					await Queue.fire({currentProgressStep: 0,text: "Wood found!"});
 					
 					task.value--;
@@ -563,7 +563,7 @@ async function load() {
 						house = true;
 					}
 				}
-				if (dragx === wood3.m41 && matrix4.m43 === wood3.m43) {
+				if (-dragx === wood3.m41 && matrix4.m43 === wood3.m43) {
 					await Queue.fire({currentProgressStep: 0,text: "Wood found!"});
 					
 					task.value--;
@@ -574,7 +574,7 @@ async function load() {
 						house = true;
 					}
 				}
-				if (dragx === wood4.m41 && matrix4.m43 === wood4.m43) {
+				if (-dragx === wood4.m41 && matrix4.m43 === wood4.m43) {
 					await Queue.fire({currentProgressStep: 0,text: "Wood found!"});
 					
 					task.value--;
@@ -585,7 +585,7 @@ async function load() {
 						house = true;
 					}
 				}
-				if (dragx === wood5.m41 && matrix4.m43 === wood5.m43) {
+				if (-dragx === wood5.m41 && matrix4.m43 === wood5.m43) {
 					await Queue.fire({currentProgressStep: 0,text: "Wood found!"});
 					
 					task.value--;
