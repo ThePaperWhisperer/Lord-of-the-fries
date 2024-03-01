@@ -800,7 +800,7 @@ move()
 			);
 			sol1 = document.getElementById("panther");
 			socket.emit("move", matrix4);
-			document.getElementById("coordinates").innerHTML = `You are at X: ${dragx} Z: ${matrix4.m43}`;
+			document.getElementById("coordinates").innerHTML = `You are at X: ${-dragx} Z: ${matrix4.m43}`;
 		}
 		};
 
