@@ -7,9 +7,6 @@
 		position: absolute;
 		transform-origin: -2500px 0px -7500px;
 	}
-	h1{
-		
-	}
 iframe{
 	position: absolute;
 	transform-style: preserve-3d;
@@ -53,7 +50,7 @@ iframe{
 		z-index: 5;
 		font-size: 20pt;
 		position: absolute;
-		: 150px;
+		top: 150px;
 	}
 	#tasks{
 		left: 75%;
@@ -66,21 +63,21 @@ iframe{
 		z-index: 10;
 		font-size: 20pt;
 		position: absolute;
-		: 200px;
+		top: 200px;
 	}
 	#enemy {
 		color: black;
 		z-index: 10;
 		font-size: 20pt;
 		position: absolute;
-		: 250px;
+		top: 250px;
 	}
 	#a {
 		color: black;
 		z-index:105;
 		font-size: 20pt;
 		position: absolute;
-		: 300px;
+		top: 300px;
 	}
 	#health {
 		content: "health";
@@ -252,7 +249,7 @@ iframe{
 		height: 10%;
 		width: 20%;
 		left: 40%;
-		: 45%;
+		top: 45%;
 		background: url(background.png);
 	}
 	#bg{
