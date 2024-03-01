@@ -80,8 +80,7 @@ io.on("connection", (socket) => {
     }
 	});
   socket.on("message", message => {
-		
-				socket.to(Array.from(socket.rooms)[1]).emit("newmessage", {message: message.message, user: message.user});
+				socket.to(Array.from(socket.rooms)[1]).emit("newmessage", {message: message.message, user: socket.nickname});
   });
 	socket.on("house", (u)=> {
 		socket.broadcast.to(Array.from(socket.rooms)[1]).emit("housemade", u);
