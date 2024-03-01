@@ -162,8 +162,7 @@ async function battle(){
 					var ending = document.getElementById("ending");
 					ending.hidden = false;
 						ending.play();
-					ending.onended = async ()=> {
-						await Queue.fire({currentProgressStep: 0,text: "You escaped!"});
+					ending.onended = async () => {
 						socket.emit("escape", username)
 						
 						location.reload();
