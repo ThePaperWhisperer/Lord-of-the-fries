@@ -1,3 +1,4 @@
+
 var house = false;
 var task = document.getElementById("enemyhealth");
 var tasks = document.getElementById("tasks");
@@ -669,7 +670,7 @@ async function load() {
   cancelable: true
 });
 				
-				if (dragy <3000) dragy-=50;
+				if (dragy >-3000) dragy-=50;
 
 const mouseMoveEvent = new MouseEvent('mousemove', {
   clientX: element.getBoundingClientRect().left + dragx,
