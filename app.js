@@ -391,7 +391,7 @@ clearTimeout(timeout)
 												 }
 												 daynumber++;
 												 if(daynumber === 2){
-													 day.innerHTML = "Day " + daynumber + ". Look around the area for wood. 6 wood will help you make a fire to warm up your fries.";
+													 day.innerHTML = "Day " + daynumber + ". Look around the area for scraps. 6 scraps will help you make a fire to warm up your fries.";
 													 task.max = 6;
 													 task.value = 6;
 													 tasks.innerHTML = "Make Fire";
@@ -541,7 +541,7 @@ async function load() {
 			if (e.key == " ") {
 				
 				if (-dragx === wood1.m41 && matrix4.m43 === wood1.m43) {
-					await Queue.fire({currentProgressStep: 0,text: "Wood found!"});
+					await Queue.fire({currentProgressStep: 0,text: "Scraps found!"});
 					
 					task.value--;
 					if (task.value === 0 && daynumber < 2) {
@@ -552,7 +552,7 @@ async function load() {
 					}
 				}
 				if (-dragx === wood2.m41 && matrix4.m43 === wood2.m43) {
-					await Queue.fire({currentProgressStep: 0,text: "Wood found!"});
+					await Queue.fire({currentProgressStep: 0,text: "Scraps found!"});
 					
 					task.value--;
 					if (task.value === 0 && daynumber < 2) {
@@ -563,7 +563,7 @@ async function load() {
 					}
 				}
 				if (-dragx === wood3.m41 && matrix4.m43 === wood3.m43) {
-					await Queue.fire({currentProgressStep: 0,text: "Wood found!"});
+					await Queue.fire({currentProgressStep: 0,text: "Scraps found!"});
 					
 					task.value--;
 					if (task.value === 0 && daynumber < 2) {
@@ -574,7 +574,7 @@ async function load() {
 					}
 				}
 				if (-dragx === wood4.m41 && matrix4.m43 === wood4.m43) {
-					await Queue.fire({currentProgressStep: 0,text: "Wood found!"});
+					await Queue.fire({currentProgressStep: 0,text: "Scraps found!"});
 					
 					task.value--;
 					if (task.value === 0 && daynumber < 2) {
@@ -585,7 +585,7 @@ async function load() {
 					}
 				}
 				if (-dragx === wood5.m41 && matrix4.m43 === wood5.m43) {
-					await Queue.fire({currentProgressStep: 0,text: "Wood found!"});
+					await Queue.fire({currentProgressStep: 0,text: "Scraps found!"});
 					
 					task.value--;
 					if (task.value === 0 && daynumber < 2) {
