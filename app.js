@@ -255,7 +255,8 @@ document.getElementById("ok").onclick = async () => {
 	socket.emit("roomname", room);
 	socket.emit("password", password);
 		document.getElementById("heli").play();
-	document.getElementById("heli").onended = async () => {
+	document.getElementById("intro").onended = async () => {
+		document.getElementById("heli").pause();
 		load();
 	}
 };
@@ -268,7 +269,8 @@ document.getElementById("neither").onclick = async () => {
 	choose();
 	
 	document.getElementById("heli").play();
-	document.getElementById("heli").onended = async () => {
+	document.getElementById("intro").onended = async () => {
+		document.getElementById("heli").pause();
 		const characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
 	link = "";
 	for (var i = 0; i < 40; i++) {
@@ -296,7 +298,8 @@ document.getElementById("no").onclick = async () => {
 	socket.emit("pass", pass);
 
 	document.getElementById("heli").play();
-	document.getElementById("heli").onended = async () => {
+	document.getElementById("intro").onended = async () => {
+		document.getElementById("heli").pause();
 		load();
 	}
 	
