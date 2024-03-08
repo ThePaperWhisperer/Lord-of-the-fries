@@ -151,9 +151,7 @@ async function battle(){
 		if(clicks >= 50){
 			
 			document.getElementById("hunter").hidden = true;
-			setTimeout(async ()=> {
 				await Queue.fire({currentProgressStep: 0,text: "Press 'k' to steal the key!"})
-			}, 5000)
 			
 			document.onkeydown = (e)=> {
 				if(e.key == "k"){
@@ -162,7 +160,7 @@ async function battle(){
 					var ending = document.getElementById("ending");
 					ending.hidden = false;
 						ending.play();
-					ending.onended = async () => {
+					ending.onended =  () => {
 						socket.emit("escape", username)
 						
 						location.reload();
