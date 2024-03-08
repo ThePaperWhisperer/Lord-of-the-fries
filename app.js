@@ -485,7 +485,7 @@ async function load() {
 		if(document.activeElement != document.getElementById("message")){
 			
 			if(e.key == "f"){
-				await Queue.fire({currentProgressStep: 0,text: "Sorry, the Mcflurry mchine is broke. try again tomorrow"});
+				await Queue.fire({currentProgressStep: 0,text: "Sorry, the McFlurry machine is broken. Try again tomorrow"});
 			}
 
 			a = parseInt(a);
