@@ -34,9 +34,9 @@
 		<meta name="twitter:image" content="https://cdn.filestack.momento360.com/Wu2JvpXJSUGLzNgb1VWc "/>
 		<!-- TODO whats the right way to do this? -->
 		<link rel="stylesheet" href='https://production-cdn.momento360.com/static/js/jquery-ui-1.11.4/jquery-ui.min.5bd3d753cab3.css'>
-		<link rel="stylesheet" href='https://production-cdn.momento360.com/static/compiled/base.736ef9b7490e.css'>
+		<link rel="stylesheet" href='https://production-cdn.momento360.com/static/compiled/base.a0a3f13c4d3f.css'>
 		<link rel="stylesheet" href='https://production-cdn.momento360.com/static/sa/dist/sa.d0518cf92b88.css'>
-		<link rel="stylesheet" href='https://production-cdn.momento360.com/static/sa/dist/icons.4e6877576299.css'>
+		<link rel="stylesheet" href='https://production-cdn.momento360.com/static/sa/dist/icons.183d10fe358d.css'>
 		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
 			integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
 			crossorigin=""/>
@@ -53,19 +53,27 @@
 		<script src="https://kit.fontawesome.com/1082abbefc.js"></script>
 		<script type="text/javascript">
 			
-			window.M360FeatureFlags = {};
+			window.M360FeatureFlags = {"40X-error-detection-modal": false, "annotation-creation": true, "annotation-hotspots": true, "annotation-templates": false, "annotations-owner-email": true, "announcekit-widget": true, "bulk-actions": true, "folders-view": true, "collection-to-folder-utility": true, "collections-tiers": true, "copy-360-placements": true, "create-flat-photo": true, "custom-annotation-types": false, "custom-marker-creation": true, "download-original": true, "embed-qr-code-toggle": true, "excel-export": true, "floorplans": true, "high-poly-sphere": false, "high-quality-images": true, "location-data": true, "navigation-hotspots": true, "password-protected-share-links": true, "search-button": true, "shared-link-thumbnails": true, "shared-links-page": false};
 			
 
 			
+				!function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="xFJ4NW2pWEP9p1Rol5mEmHtsYrbOtezd";;analytics.SNIPPET_VERSION="5.2.0";
+				analytics.load("KXYso8SXdCrrPvHF67XDL3MNbgRHHIen");
+				analytics.page();
+				}}();
+			
 
 			
-			window.M360logged_in=false;
+			window.M360logged_in=true;
 			
 
 			
 			window.M360high_volume=false;
 			
 		</script>
+
+			
+
 		<script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
 			integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
 			crossorigin=""></script>
@@ -78,7 +86,13 @@
     };
     window['_request_user'] = {
     
-        is_authenticated: false
+        id: "f3931069d24c4ba6976156c2542922a7",
+        first_name: "The Paper",
+        last_name: "Whisperer",
+        email: "theautisticwayaround@gmail.com",
+        account_tier: null,
+        timezone: "America/Los_Angeles",
+        is_authenticated: true
     
     };
 </script>
@@ -225,8 +239,8 @@
 				"front/images/white-on-transparent-logo-2x.png": "https://production-cdn.momento360.com/static/front/images/white-on-transparent-logo-2x.f74c62b90f8f.png",
 			};
 		</script>
-		<script src='https://production-cdn.momento360.com/static/frontend/dist/vendor.531fb253c467.js'></script>
-		<script src='https://production-cdn.momento360.com/static/frontend/dist/sa.7cab6686f19d.js'></script>
+		<script src='https://production-cdn.momento360.com/static/frontend/dist/vendor.07d998d7189f.js'></script>
+		<script src='https://production-cdn.momento360.com/static/frontend/dist/sa.09c8eea5e57c.js'></script>
 
 		
 		<div id="print-info" class="print-only">
@@ -253,23 +267,21 @@
 			var targetURL = 'https://www.momento360.com/embed-landing/?utm_source=embed&utm_campaign=embed&utm_medium=embed';
 			var isVideo = false;
 			var hideCardboard = false;
-			var includeLinkedPlans = true;
+			var includeLinkedPlans = false;
 			var openPlan = false;
 			var planUuid = '';
 			var linkedPlans = [];
-			
-				
 			
 			var captionText = 'bg';
 			var showM360 = true;
 			var panSpeed = 0.01;
 			var yOrientationInDegrees = 180.0;
-			var heading = -39.3;
-			var pitch = -5.3;
+			var heading = -44.3;
+			var pitch = -4.4;
 			var fov = 75.0;
 			var annotationKey = '';
 			var highVolume = false;
-			var loggedIn = false;
+			var loggedIn = true;
 			var titlebar = false;
 			var wheel = true;
 			var customData1 = '';
@@ -319,17 +331,6 @@
 		</script>
 
 
-		
-			<!-- Google tag (gtag.js) -->
-			<script async src="https://www.googletagmanager.com/gtag/js?id=G-WD6LR47MQ6"></script>
-			<script>
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
-
-			gtag('config', 'G-WD6LR47MQ6');
-			</script>
-		
 
 		
 		
