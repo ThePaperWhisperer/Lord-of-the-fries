@@ -1,0 +1,20 @@
+version: 1.0.0
+
+components:
+  - name: Lord Of The Fries
+    type: service
+    runtime: nodejs14
+    source:
+      type: local
+      path: .
+    env:
+      - name: PORT
+        value: "3000"
+      - name: NODE_ENV
+        value: "production"
+    resources:
+      cpu: 500m
+      memory: 512Mi
+    ports:
+      - port: 3000
+        protocol: HTTP
