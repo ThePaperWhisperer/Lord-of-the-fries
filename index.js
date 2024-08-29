@@ -28,6 +28,7 @@ io.on("connection", (socket) => {
 			rooms.push({room: room, password: password});
 			socket.join(room);
 			roomname = room;
+			socket.emit("start");
 		});
 			  });
 	socket.on("self", link =>{
@@ -58,7 +59,7 @@ io.on("connection", (socket) => {
 				const sockets = await io.in(room).fetchSockets();
 				sockets.forEach(s=> {
 					s.broadcast.to(room).emit("joinedroom", s.nickname);
-					
+					socket.emit("start");
 
 				})
 			}

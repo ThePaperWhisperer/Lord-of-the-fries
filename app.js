@@ -254,7 +254,6 @@ document.getElementById("ok").onclick = async () => {
 	socket.emit("username", username);
 	socket.emit("roomname", room);
 	socket.emit("password", password);
-		load();
 	
 };
 
@@ -272,7 +271,6 @@ document.getElementById("neither").onclick = async () => {
 	}
 	socket.emit("self", link);
 	console.log(link);
-		load();
 	
 
 	
@@ -290,10 +288,9 @@ document.getElementById("no").onclick = async () => {
 	
 	socket.emit("room", roomname);
 	socket.emit("pass", pass);
-
-		load();
 	
 }
+socket.on("start", load)
 socket.on("usernotadded", async () => {
 	const {value: person} = await Queue.fire({currentProgressStep: 3,input: "text", text:
 		"Choose a new username. Your old one was either taken, inappropriate, or blank!"
