@@ -272,7 +272,7 @@ document.getElementById("neither").onclick = async () => {
 	socket.emit("self", link);
 	console.log(link);
 	
-
+load();
 	
 };
 document.getElementById("no").onclick = async () => {
