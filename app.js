@@ -265,9 +265,6 @@ document.getElementById("neither").onclick = async () => {
 
 	choose();
 	
-	document.getElementById("heli").play();
-	document.getElementById("intro").onended = async () => {
-		document.getElementById("heli").pause();
 		const characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
 	link = "";
 	for (var i = 0; i < 40; i++) {
@@ -276,7 +273,7 @@ document.getElementById("neither").onclick = async () => {
 	socket.emit("self", link);
 	console.log(link);
 		load();
-	}
+	
 
 	
 };
