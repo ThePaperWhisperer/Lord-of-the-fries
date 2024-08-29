@@ -124,11 +124,21 @@ async function check(fram){
 			check(fram)
 		}, 3000);
 				}
+				
 	else{
-				fram.remove();
-									await Queue.fire({currentProgressStep: 0,text: "Find Ronald and click him to get the key!"}); 		
-									document.getElementById("hunter").style.display = "block"; 						
-									battle();     					
+		fram.src = "move.html";
+		if(!fram.contentWindow.done){
+			setTimeout(()=> {
+				check(fram)
+			}, 3000)
+		}
+		else{
+			
+			fram.remove();
+			await Queue.fire({currentProgressStep: 0,text: "Find Ronald and click him to get the key!"}); 		
+			document.getElementById("hunter").style.display = "block"; 						
+			battle();  
+		}   					
 	}
 }
 async function lose(){

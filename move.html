@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <style>
+        div{
+            background-color: white;
+        }
+        p{
+            background-color: white;
+            font-size: x-large;
+        }
+    </style>
+<script>
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+var corrects = 0;
+var done = false;
+
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  if(data === 1 && ev.target.id === "div1"){
+    corrects ++;
+    ev.target.appendChild(document.getElementById(data));
+  }
+  if(data === 2 && ev.target.id === "div2"){
+    corrects ++;
+    ev.target.appendChild(document.getElementById(data));
+  }
+  if(data === 3 && ev.target.id === "div3"){
+    corrects ++;
+    ev.target.appendChild(document.getElementById(data));
+  }
+  if(data === 4 && ev.target.id === "div4"){
+    corrects ++;
+    ev.target.appendChild(document.getElementById(data));
+  }
+  if(corrects === 4){
+    done = true;
+  }
+}
+</script>
+</head>
+<body>
+
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<div id="div4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+<p id="4" draggable="true" ondragstart="drag(event)" >If you use enough speed.</p>
+<p id="2" draggable="true" ondragstart="drag(event)" >To find the hidden Ronald at night.</p>
+<p id="1" draggable="true" ondragstart="drag(event)" >A bad time it is to fight</p>
+<p id="3" draggable="true" ondragstart="drag(event)" >During the day you may succeed</p>
+
+</body>
+</html>
