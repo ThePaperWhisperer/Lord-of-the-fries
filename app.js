@@ -439,6 +439,10 @@ async function move(){
 	document.querySelector("iframe").style.transform = "translate3d(" + b + "px, " + y + "px, " + a + "px) perspective(" + ( a +5000) + "px)"
 }
 async function load() {
+	document.getElementById("heli").play();
+	document.getElementById("intro").play();
+	document.getElementById("intro").onended = ()=>{
+
 	document.body.style.background = "black";
 	document.querySelector("#bg").play();
 	setTimeout(burglar, 3000);
@@ -830,7 +834,7 @@ move()
 		
 	}, 5000);
 
-
+	}
 }
 var message, p2, p, newmessage;
 
