@@ -9,6 +9,12 @@
             background-color: white;
             font-size: x-large;
         }
+        *{
+          border: 1px solid black;
+        }
+        html{
+          background: gray;
+        }
     </style>
 <script>
 function allowDrop(ev) {
@@ -53,6 +59,8 @@ function drop(ev) {
 <div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
 <div id="div4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
 
+<br>
+<br>
 <p id="4" draggable="true" ondragstart="drag(event)" >If you use enough speed.</p>
 <p id="2" draggable="true" ondragstart="drag(event)" >To find the hidden Ronald at night.</p>
 <p id="1" draggable="true" ondragstart="drag(event)" >A bad time it is to fight</p>
