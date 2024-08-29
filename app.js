@@ -254,11 +254,8 @@ document.getElementById("ok").onclick = async () => {
 	socket.emit("username", username);
 	socket.emit("roomname", room);
 	socket.emit("password", password);
-		document.getElementById("heli").play();
-	document.getElementById("intro").onended = async () => {
-		document.getElementById("heli").pause();
 		load();
-	}
+	
 };
 
 document.getElementById("neither").onclick = async () => {
@@ -297,11 +294,7 @@ document.getElementById("no").onclick = async () => {
 	socket.emit("room", roomname);
 	socket.emit("pass", pass);
 
-	document.getElementById("heli").play();
-	document.getElementById("intro").onended = async () => {
-		document.getElementById("heli").pause();
 		load();
-	}
 	
 }
 socket.on("usernotadded", async () => {
