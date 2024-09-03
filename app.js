@@ -1,4 +1,4 @@
-
+var flurry = [];
 var house = false;
 var task = document.getElementById("enemyhealth");
 var tasks = document.getElementById("tasks");
@@ -171,6 +171,7 @@ async function battle(){
 				await Queue.fire({currentProgressStep: 0,text: "Press 'k' to steal the key!"})
 			
 			document.onkeydown = (e)=> {
+
 				if(e.key == "k"){
 					e.preventDefault();
 					document.getElementById("heli").play();
@@ -487,11 +488,17 @@ async function load() {
 		wood4 = new WebKitCSSMatrix(window.getComputedStyle(document.getElementById("3")).transform);
 		wood5 = new WebKitCSSMatrix(window.getComputedStyle(document.getElementById("4")).transform); 
 		document.onkeydown = async (e) =>{
+		
+		
 		if(document.activeElement != document.getElementById("message")){
-			
-			if(e.key == "f"){
-				await Queue.fire({currentProgressStep: 0,text: "Sorry, the McFlurry machine is broken. Try again tomorrow"});
+			if(flurry.length === 6){
+				if(flurry.join() === "flurry"){
+					await Queue.fire({currentProgressStep: 0,text: "Sorry, the McFlurry machine is broken. Try again tomorrow"});
+
+				}
+				flurry = [];
 			}
+			flurry.push(e.key);
 
 			a = parseInt(a);
 			b = parseInt(b);
