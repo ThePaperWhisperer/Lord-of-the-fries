@@ -119,16 +119,21 @@ async function burglar(){
 	}
 }
 async function check(fram){
-	if(fram.src === "move.html"){
+	if(fram.src != "move.html"){
 		if(!fram.contentWindow.end){
 		setTimeout(()=> {
 			check(fram)
 		}, 3000);
 				}
+				else{
+					fram.src = "move.html";
+					setTimeout(()=> {
+						check(fram)
+					}, 3000);
+				}
 			}
 				
 	else{
-		fram.src = "move.html";
 		if(!fram.contentWindow.done){
 			setTimeout(()=> {
 				check(fram)
