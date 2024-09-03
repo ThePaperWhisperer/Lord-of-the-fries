@@ -491,13 +491,11 @@ async function load() {
 		
 		
 		if(document.activeElement != document.getElementById("message")){
-			if(flurry.length === 6){
-				if(flurry.join() === "flurry"){
+				if(flurry.join().includes("flurry") ){
 					await Queue.fire({currentProgressStep: 0,text: "Sorry, the McFlurry machine is broken. Try again tomorrow"});
 
+					flurry = [];
 				}
-				flurry = [];
-			}
 			flurry.push(e.key);
 
 			a = parseInt(a);
