@@ -491,13 +491,7 @@ async function load() {
 		
 		
 		if(document.activeElement != document.getElementById("message")){
-				if(flurry.join().includes("flurry") ){
-					await Queue.fire({currentProgressStep: 0,text: "Sorry, the McFlurry machine is broken. Try again tomorrow"});
-
-					flurry = [];
-				}
-			flurry.push(e.key);
-
+			
 			a = parseInt(a);
 			b = parseInt(b);
 			y = parseInt(y);
@@ -804,6 +798,13 @@ move()
 				
 				thirst -= 5;
 			}
+			flurry.push(e.key);
+			if(flurry.join().includes("flurry") ){
+				await Queue.fire({currentProgressStep: 0,text: "Sorry, the McFlurry machine is broken. Try again tomorrow"});
+
+				flurry = [];
+			}
+
 			move();
 			matrix4 = new WebKitCSSMatrix(
 				window.getComputedStyle(document.getElementById("universe")).transform
@@ -812,6 +813,7 @@ move()
 			socket.emit("move", matrix4);
 			document.getElementById("coordinates").innerHTML = `You are at X: ${-dragx} Z: ${matrix4.m43}`;
 		}
+		
 		};
 
 		document.getElementById("universe").hidden = false;
