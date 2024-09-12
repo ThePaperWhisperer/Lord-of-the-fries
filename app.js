@@ -799,7 +799,7 @@ move()
 				thirst -= 5;
 			}
 			flurry.push(e.key);
-			if(e.key === "f") ){
+			if(e.key === "f"){
 				await Queue.fire({currentProgressStep: 0,text: "Sorry, the McFlurry machine is broken. Try again tomorrow"});
 
 				flurry = [];
