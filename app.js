@@ -428,8 +428,8 @@ clearTimeout(timeout)
 		if(daynumber >= 4){
 			day.innerHTML = "Day " + daynumber + ". look for an abandoned playground near(0, 50).";
 			
-			model.style.height = "1500px";
-			model.style.width = "1500px"
+			model.style.height = "100vh";
+			model.style.width = "100vw"
 			document.getElementById("modeldiv").style.transform = "translate3d(0px, 0px, 50px) ";
 			document.getElementById("modeldiv").style.zIndex = "100000";
 			document.getElementById("modeldiv").style.position = "absolute";
