@@ -481,7 +481,6 @@ async function load() {
 			document.body.appendChild(wood);
 		}
 		day.hidden = true;
-
 		wood1 = new WebKitCSSMatrix(window.getComputedStyle(document.getElementById("0")).transform);
 		wood2 = new WebKitCSSMatrix(window.getComputedStyle(document.getElementById("1")).transform);
 		wood3 = new WebKitCSSMatrix(window.getComputedStyle(document.getElementById("2")).transform);
