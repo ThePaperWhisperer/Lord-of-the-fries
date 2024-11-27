@@ -15,7 +15,6 @@
 	<script src="https://rawgit.com/jquery/jquery-ui/1-11-stable/external/jquery-simulate/jquery.simulate.js"></script>
 	<link rel="stylesheet" href="style.css">
 		<link rel="manifest" href="manifest.json" />
-		<script src="https://cdn.babylonjs.com/viewer/babylon.viewer.js"></script>
 
 <style>
 	
@@ -88,11 +87,7 @@
 			width: 500px;
 			transform: translateZ(-250px);
 		}
-		#model{
-			position: absolute;
-			top: 0px;
-			left: 0px;
-		}
+
 		#bottom2 {
 			height: 500px;
 			width: 500px;
@@ -159,7 +154,7 @@
 		width: 50px;
 	}
 	#room *{
-		z-index: 100;
+		zIndex: 100;
 	}
 </style>
 	
@@ -180,10 +175,7 @@
 		<br>
 		<button id="neither">Play Alone</button>
 	</div>
-		
-	<babylon id="building" model="building.glb"></babylon>
-
-	<div id="universe">
+		<div id="universe">
 			<div id="world">
 			<img id="panther" hidden="true" src="soldier.png" class="soldier"/>
 			<div id="mainDiv">
@@ -194,8 +186,10 @@
 			</div>
 		</div>
 			<div id="modeldiv">
+				<model-viewer id="model" src="building.glb"></model-viewer>
 			</div>
-		</div>
+	</div>
+		<iframe style="height: 150vh; width: 150vw" scrolling="no" src="bg.html"></iframe>
 
 		<model-viewer id="hunter" style="z-index: 100000;display: none; position: absolute; height: 300px; width: 300px" src="hunter.glb"></model-viewer>
 		<img id="ex" src="explosion.png" hidden="true"/>
