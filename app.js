@@ -426,7 +426,7 @@ clearTimeout(timeout)
 													 universe.hidden = false;
 												 }, 5000)
 		if(daynumber >= 4){
-			day.innerHTML = "Day " + daynumber + ". look for an abandoned playground near(0, 50).";
+			day.innerHTML = "Day " + daynumber + ". Look for an abandoned section near(0, 50), them press enter.";
 			
 			model.style.height = "1500px";
 			model.style.width = "1500px"
