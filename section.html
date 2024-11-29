@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <canvas id="renderCanvas" touch-action="none"></canvas>
+    <canvas id="renderCanvas" style="height: 100vh; width: 100vw;" touch-action="none"></canvas>
     <script>
         // Get the canvas element
         const canvas = document.getElementById('renderCanvas');
@@ -36,15 +36,24 @@
 
         BABYLON.SceneLoader.Append("", "building.glb", scene, () => {
             scene.meshes.forEach(mesh => {
-            if (mesh.name !== "__root__") { 
-                mesh.position.z = 1; // Move -3 units on the Z axis
+                if (mesh.name !== "__root__") {
+                    const boundingBox = mesh.getBoundingInfo().boundingBox;
+
+                    // Calculate the center of the bounding box
+                    const center = boundingBox.centerWorld;
+
+                    // Translate the mesh to its center
+                    mesh.position.x -= center.x;
+                    mesh.position.y -= center.y;
+                    mesh.position.z -= center.z;
+                
             }
         });
 
         console.log("Model loaded successfully!");
     }, null, (scene, message) => {
-        console.error("Failed to load model:", message);
-    });
+            console.error("Failed to load model:", message);
+        });
     </script>
 </body>
 
