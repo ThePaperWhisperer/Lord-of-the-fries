@@ -15,7 +15,6 @@
 	<script src="https://rawgit.com/jquery/jquery-ui/1-11-stable/external/jquery-simulate/jquery.simulate.js"></script>
 	<link rel="stylesheet" href="style.css">
 		<link rel="manifest" href="manifest.json" />
-		<script src="https://cdn.babylonjs.com/viewer/babylon.viewer.js"></script>
 
 <style>
 	
@@ -155,9 +154,8 @@
 		width: 50px;
 	}
 	#room *{
-		z-index: 100;
+		zIndex: 100;
 	}
-
 </style>
 	
 </head>
@@ -191,7 +189,7 @@
 				<model-viewer id="model" src="building.glb"></model-viewer>
 			</div>
 	</div>
-		<babylon id="room" hidden model="building.glb"></babylon>
+		<iframe style="height: 150vh; width: 150vw" scrolling="no" src="bg.html"></iframe>
 
 		<model-viewer id="hunter" style="z-index: 100000;display: none; position: absolute; height: 300px; width: 300px" src="hunter.glb"></model-viewer>
 		<img id="ex" src="explosion.png" hidden="true"/>
