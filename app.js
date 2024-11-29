@@ -428,8 +428,8 @@ clearTimeout(timeout)
 		if(daynumber >= 4){
 			day.innerHTML = "Day " + daynumber + ". look for an abandoned playground near(0, 50).";
 			
-			model.style.height = "100vh";
-			model.style.width = "100vw"
+			model.style.height = "1500px";
+			model.style.width = "1500px"
 			document.getElementById("modeldiv").style.transform = "translate3d(0px, 0px, 50px) ";
 			document.getElementById("modeldiv").style.zIndex = "100000";
 			document.getElementById("modeldiv").style.position = "absolute";
@@ -481,6 +481,8 @@ async function load() {
 			document.body.appendChild(wood);
 		}
 		day.hidden = true;
+		document.querySelector("#room").hidden = false;
+
 		wood1 = new WebKitCSSMatrix(window.getComputedStyle(document.getElementById("0")).transform);
 		wood2 = new WebKitCSSMatrix(window.getComputedStyle(document.getElementById("1")).transform);
 		wood3 = new WebKitCSSMatrix(window.getComputedStyle(document.getElementById("2")).transform);
