@@ -436,7 +436,7 @@ clearTimeout(timeout)
 			document.getElementById("modeldiv").style.transformStyle = "preserve-3d";			
 			task.max = 1;
 													 task.value = 1;
-													 tasks.innerHTML = "Find Playground";
+													 tasks.innerHTML = "Find Section";
 		}
 	}
 		timeout = setTimeout(time, 90000);
@@ -628,7 +628,7 @@ async function load() {
 			}
 
 
-			if(e.key == "Enter" && daynumber >= 5 && dragx === 0 && matrix4.m43 === 50){
+			if(e.key == "Enter" && daynumber >= 4 && dragx === 0 && matrix4.m43 === 50){
 				await Queue.fire({currentProgressStep: 0,text: "Playground Entered! Find the clues to discover what happened."});
 				inroom = true;
 				frame = document.createElement("iframe");

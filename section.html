@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Babylon.js GLTF Loader</title>
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+    <script src="https://cdn.babylonjs.com/loaders/babylon.glTF2FileLoader.min.js"></script>
+</head>
+
+<body>
+    <canvas id="renderCanvas" touch-action="none"></canvas>
+    <script>
+        // Get the canvas element
+        const canvas = document.getElementById('renderCanvas');
+
+        // Create the Babylon.js engine
+        const engine = new BABYLON.Engine(canvas, true);
+
+        // Create a basic scene
+        const scene = new BABYLON.Scene(engine);
+
+        // Add a camera
+        const camera = new BABYLON.ArcRotateCamera("camera", Math.PI / 2, Math.PI / 2.5, 10, BABYLON.Vector3.Zero(), scene);
+        camera.attachControl(canvas, true);
+
+        // Add a light
+        const light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), scene);
+
+        // Start the render loop
+        engine.runRenderLoop(() => scene.render());
+
+        // Handle window resize
+        window.addEventListener("resize", () => engine.resize());
+
+        BABYLON.SceneLoader.Append("", "building.glb", scene, () => {
+            scene.meshes.forEach(mesh => {
+            if (mesh.name !== "__root__") { 
+                mesh.position.z = 1; // Move -3 units on the Z axis
+            }
+        });
+
+        console.log("Model loaded successfully!");
+    }, null, (scene, message) => {
+        console.error("Failed to load model:", message);
+    </script>
+</body>
+
+</html>
