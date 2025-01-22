@@ -14,12 +14,12 @@ const PORT = 3000 || process.env.PORT;
 app.use(express.static(__dirname));
 
 // Socket setup
-const io = socketio(app);
+const io = socketio(http);
 var i = 0;
 	var x = 0;
 var roomnumber;
 var people = 0;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+http.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 io.on("connection", (socket) => {
   people++;
   socket.emit("userjoined");
