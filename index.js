@@ -7,6 +7,7 @@ const { addWords, isBad } = require("adults");
 var roomname;
 var users = [];
 var rooms = [];
+var server = http.createServer(app)
 var winners = [];
 const app = express();
 const PORT = 3000 || process.env.PORT;
