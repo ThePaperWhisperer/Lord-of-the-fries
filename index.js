@@ -1,4 +1,3 @@
-const serverless = require("serverless-http")
 const express = require("express");
 const socketio = require("socket.io");
 const http = require("http");
@@ -6,11 +5,11 @@ const fs = require("fs");
 const { addWords, isBad } = require("adults");
 var roomname;
 var users = [];
-const app = express();
 var rooms = [];
-var server = http.createServer(app)
 var winners = [];
+const app = express();
 const PORT = 3000 || process.env.PORT;
+const server = http.createServer(app);
 // Set static folder
 app.use(express.static(__dirname));
 
@@ -137,4 +136,3 @@ io.on("connection", (socket) => {
 		socket.broadcast.to(Array.from(socket.rooms)[1]).emit("escaped", per)
 	})
 });
-serverless(app)
