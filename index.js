@@ -1,3 +1,4 @@
+const serverless = require("serverless-http")
 const express = require("express");
 const socketio = require("socket.io");
 const http = require("http");
@@ -9,17 +10,16 @@ var rooms = [];
 var winners = [];
 const app = express();
 const PORT = 3000 || process.env.PORT;
-const server = http.createServer(app);
 // Set static folder
 app.use(express.static(__dirname));
 
 // Socket setup
-const io = socketio(server);
+const io = socketio(app);
 var i = 0;
 	var x = 0;
 var roomnumber;
 var people = 0;
-server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 io.on("connection", (socket) => {
   people++;
   socket.emit("userjoined");
@@ -136,3 +136,4 @@ io.on("connection", (socket) => {
 		socket.broadcast.to(Array.from(socket.rooms)[1]).emit("escaped", per)
 	})
 });
+serverless(app)
