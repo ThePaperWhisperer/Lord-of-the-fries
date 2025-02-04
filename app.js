@@ -272,21 +272,9 @@ async function choose() {
 document.getElementById("dialog").hidden = false;
 document.getElementById("universe").hidden = true;
 document.getElementById("text").hidden = true;
-document.getElementById("option").innerHTML = "Do You Want To Create A Room?";
+document.getElementById("option").innerHTML = "Do You Want To Play?";
 
-document.getElementById("ok").onclick = async () => {
-	document.body.style.backgroundImage = "url(sky.jpg)";
-	document.getElementById("dialog").hidden = true;
-		var {value: room} = await Queue.fire({currentProgressStep: 0,input: "text", text:"Choose a private room name."});
-	if(room){
-	var {value: password} = await Queue.fire({currentProgressStep: 1,input: "text", text:"Choose a password."});
-	}
-	var {value: username} = await Queue.fire({currentProgressStep: 2,input: "text", text:"Choose an username!"});
-	channel.publish("username", username);
-	channel.publish("roomname", room);
-	channel.publish("password", password);
-	
-};
+
 
 document.getElementById("neither").onclick = async () => {
 	document.body.style.backgroundImage = "url(sky.jpg)";
@@ -305,20 +293,7 @@ document.getElementById("neither").onclick = async () => {
 load();
 	
 };
-document.getElementById("no").onclick = async () => {
-	document.body.style.backgroundImage = "url(sky.jpg)";
-		document.getElementById("dialog").hidden = true;
-	var {value:roomname} = await Queue.fire({currentProgressStep: 0,input: "text", text:"Enter the room name."});
-	if(roomname){
-	var {value: pass} = await Queue.fire({currentProgressStep: 1,input: "text", text:"Enter the room's password."});
-	}
-	var {value: username} = await Queue.fire({currentProgressStep: 2,input: "text", text:"Choose an username!"});
-	channel.publish("username", username);
-	
-	channel.publish("room", roomname);
-	channel.publish("pass", pass);
-	
-}
+
 channel.subscribe("start", load)
 channel.subscribe("usernotadded", async () => {
 	const {value: person} = await Queue.fire({currentProgressStep: 3,input: "text", text:
