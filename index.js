@@ -1,155 +1,138 @@
 const express = require("express");
-const Ably = require("ably");
+const socketio = require("socket.io");
 const http = require("http");
 const fs = require("fs");
 const { addWords, isBad } = require("adults");
-
 var roomname;
 var users = [];
 var rooms = [];
 var winners = [];
-
 const app = express();
 const PORT = 3000 || process.env.PORT;
 const server = http.createServer(app);
-
-const ably = new Ably.Realtime('AUFTWw.lX4uEQ:N9x3o9blgYQF8Q70S2mwM_y3bENa3ijxFteTRHEX6-s');
-
 // Set static folder
 app.use(express.static(__dirname));
 
+// Socket setup
+const io = socketio(server);
+var i = 0;
+	var x = 0;
+var roomnumber;
+var people = 0;
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+io.on("connection", (socket) => {
+  people++;
+  socket.emit("userjoined");
+	socket.on("roomname", room => {
+		socket.on("password", password=> {
+			rooms.push({room: room, password: password});
+			socket.join(room);
+			roomname = room;
+			socket.emit("start");
+		});
+			  });
+	socket.on("self", link =>{
+		socket.join(link);
+	});
+	socket.on("room", room => {
+		socket.on("pass",async (pass) => {
+			if(rooms.length > 0){
+			for(var i = 0; i < rooms.length; i++){
+				if(room === rooms[i].room && pass === rooms[i].password){
+					socket.join(room);
+					x = 0;
+				}
+				if(room === rooms[i].room && pass === rooms[i].password){
+					break;
+				}
+				else{
+					x++;
+				}
+			}
+			console.log(x);
+			if(x > 0){
+				socket.emit("roomnotjoined");
+			}
+			
+			else{
+				socket.join(room);
+				const sockets = await io.in(room).fetchSockets();
+				sockets.forEach(s=> {
+					s.broadcast.to(room).emit("joinedroom", s.nickname);
+					socket.emit("start");
 
-ably.connection.on('connected', () => {
-    console.log('Connected to Ably!');
-});
+				})
+			}
+			}
+			else{
+				socket.emit("roomnotjoined")
+			}
+				
+		});
+	});
+			socket.on("username", (user) => {
+    if (users.includes(user) || user === null || user === "" || isBad(user)) {
+      socket.emit("usernotadded");
+    } else {
+      socket.nickname = user;
+      users.push(user);
+      socket.to(Array.from(socket.rooms)[1]).emit("useradded", users);
+      socket.to(Array.from(socket.rooms)[1]).emit("joined", user);
+    }
+	});
+  socket.on("message", message => {
+				socket.to(Array.from(socket.rooms)[1]).emit("newmessage", {message: message.message, user: socket.nickname});
+  });
+	socket.on("house", (u)=> {
+		socket.broadcast.to(Array.from(socket.rooms)[1]).emit("housemade", u);
+	});
+	socket.on("fire", (u)=> {
+		socket.broadcast.to(Array.from(socket.rooms)[1]).emit("firemade", u);
+	});
+  socket.on("disconnecting", () => {
+    people--;
+    
+        socket.leave(roomnumber);
+        users = users.filter((use) => use != socket.nickname);
+        socket.to(Array.from(socket.rooms)[1]).emit("leave", users);
+        socket.to(Array.from(socket.rooms)[1]).emit("left", socket.nickname);
+  });
+  socket.on("userwon", () => {
+    
+        io.to(Array.from(socket.rooms)[1]).emit("winnerchosen");
+        io.to(Array.from(socket.rooms)[1]).emit("gg");
 
-const getChannel = (room) => {
-    return ably.channels.get(room);
-};
+  });
+  socket.on("playerhit", () => {
+   
+        socket.to(Array.from(socket.rooms)[1]).emit("damage");
 
-ably.connection.once('connected', () => {
-    const globalChannel = ably.channels.get('global');
-
-    globalChannel.subscribe('userjoined', () => {
-        people++;
-    });
-
-    globalChannel.subscribe('roomname', (message) => {
-        const { room, password } = message.data;
-        rooms.push({ room, password });
-        getChannel(room).publish('start');
-    });
-
-    globalChannel.subscribe('self', (message) => {
-        const { link } = message.data;
-        getChannel(link);
-    });
-
-    globalChannel.subscribe('room', async (message) => {
-        const { room, pass } = message.data;
-        let foundRoom = false;
-
-        for (let i = 0; i < rooms.length; i++) {
-            if (room === rooms[i].room && pass === rooms[i].password) {
-                foundRoom = true;
-                break;
-            }
-        }
-
-        if (foundRoom) {
-            const roomChannel = getChannel(room);
-            const sockets = await roomChannel.presence.get();
-            sockets.forEach(s => {
-                roomChannel.publish('joinedroom', { nickname: s.clientId });
-            });
-            roomChannel.publish('start');
-        } else {
-            globalChannel.publish('roomnotjoined');
-        }
-    });
-
-    globalChannel.subscribe('username', (message) => {
-        const user = message.data;
-        const room = Array.from(globalChannel.presence.get())[0].clientId;
-
-        if (users.includes(user) || user === null || user === "" || isBad(user)) {
-            globalChannel.publish('usernotadded');
-        } else {
-            users.push(user);
-            getChannel(room).publish('useradded', users);
-            getChannel(room).publish('joined', user);
-        }
-    });
-
-    globalChannel.subscribe('message', (message) => {
-        const { msg } = message.data;
-        const room = Array.from(globalChannel.presence.get())[0].clientId;
-        getChannel(room).publish('newmessage', { message: msg, user: message.clientId });
-    });
-
-    globalChannel.subscribe('house', (message) => {
-        const room = Array.from(globalChannel.presence.get())[0].clientId;
-        getChannel(room).publish('housemade', message.data);
-    });
-
-    globalChannel.subscribe('fire', (message) => {
-        const room = Array.from(globalChannel.presence.get())[0].clientId;
-        getChannel(room).publish('firemade', message.data);
-    });
-
-    globalChannel.subscribe('disconnecting', (message) => {
-        people--;
-        const room = Array.from(globalChannel.presence.get())[0].clientId;
-        users = users.filter(use => use !== message.clientId);
-        getChannel(room).publish('leave', users);
-        getChannel(room).publish('left', message.clientId);
-    });
-
-    globalChannel.subscribe('userwon', () => {
-        const room = Array.from(globalChannel.presence.get())[0].clientId;
-        getChannel(room).publish('winnerchosen');
-        getChannel(room).publish('gg');
-    });
-
-    globalChannel.subscribe('playerhit', () => {
-        const room = Array.from(globalChannel.presence.get())[0].clientId;
-        getChannel(room).publish('damage');
-    });
-
-    globalChannel.subscribe('died', (message) => {
-        const user = message.data;
-        users = users.filter(use => use !== user);
-        const room = Array.from(globalChannel.presence.get())[0].clientId;
-        getChannel(room).publish('leave', users);
-        getChannel(room).publish('gameover', user);
-    });
-
-    globalChannel.subscribe('hit', (message) => {
-        const person = message.data;
-        const room = Array.from(globalChannel.presence.get())[0].clientId;
-        getChannel(room).publish('point', person);
-    });
-
-    globalChannel.subscribe('won', (message) => {
-        const user = message.data;
+  });
+  socket.on("died", (user) => {
+    users.filter((use) => use != user);
+   
+        socket.to(Array.from(socket.rooms)[1]).emit("leave", users);
+        socket.to(Array.from(socket.rooms)[1]).emit("gameover", user);
+     
+  });
+  socket.on("hit", (person) => {
+        socket.to(Array.from(socket.rooms)[1]).emit("point", person);    
+  });
+  socket.on("won", (user) => {
+   
+        socket.to(Array.from(socket.rooms)[1]).emit("winner", user);
         winners.push(user);
-        const room = Array.from(globalChannel.presence.get())[0].clientId;
-        getChannel(room).publish('winner', user);
         if (winners.length === 2) {
-            getChannel(room).publish('winners', winners);
+          io.to(Array.from(socket.rooms)[1]).emit("winners", winners);
         }
-    });
+  
+  });
+  socket.on("move", (matrix) => {
+   
+        socket.to(Array.from(socket.rooms)[1]).emit("pmove", {matrix: matrix, person: socket.nickname});
 
-    globalChannel.subscribe('move', (message) => {
-        const { matrix } = message.data;
-        const room = Array.from(globalChannel.presence.get())[0].clientId;
-        getChannel(room).publish('pmove', { matrix, person: message.clientId });
-    });
-
-    globalChannel.subscribe('escape', (message) => {
-        const per = message.data;
-        const room = Array.from(globalChannel.presence.get())[0].clientId;
-        getChannel(room).publish('escaped', per);
-    });
+  });
+	socket.on("escape", per => {
+		socket.broadcast.to(Array.from(socket.rooms)[1]).emit("escaped", per)
+	})
 });

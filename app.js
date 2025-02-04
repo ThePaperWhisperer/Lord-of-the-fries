@@ -382,7 +382,6 @@ clearTimeout(timeout)
 		document.getElementById("night").style.opacity = "0%";
 		universe.hidden = true;
 	 day.hidden = false;
-	 day.style.background = "white";
 		 day.style.top = "100px";
 													 day.style.left = "100px";
 								 day.style.position = "relative";
@@ -405,7 +404,7 @@ clearTimeout(timeout)
 			document.getElementById("universe").appendChild(lake);
 			laketrix = new WebKitCSSMatrix(window.getComputedStyle(lake).transform);
 		}
-		if(daynumber === 3){
+		if(daynumber >= 3){
 			day.innerHTML = "Day " + daynumber + ". Keep your stats in check. Now, water is a factor. Find the sink at (0, 0), then press R to drink.";
 		}
 		if(daynumber > 3){
@@ -425,8 +424,8 @@ clearTimeout(timeout)
 													 day.hidden = true;
 													 universe.hidden = false;
 												 }, 5000)
-		if(daynumber >= 4){
-			day.innerHTML = "Day " + daynumber + ". Look for an abandoned section near(0, 50), them press enter.";
+		if(daynumber >= 5){
+			day.innerHTML = "Day " + daynumber + ". look for an abandoned playground near(0, 50).";
 			
 			model.style.height = "1500px";
 			model.style.width = "1500px"
@@ -436,7 +435,7 @@ clearTimeout(timeout)
 			document.getElementById("modeldiv").style.transformStyle = "preserve-3d";			
 			task.max = 1;
 													 task.value = 1;
-													 tasks.innerHTML = "Find Section";
+													 tasks.innerHTML = "Find Playground";
 		}
 	}
 		timeout = setTimeout(time, 90000);
@@ -628,7 +627,7 @@ async function load() {
 			}
 
 
-			if(e.key == "Enter" && daynumber >= 4 && dragx === 0 && matrix4.m43 === 50){
+			if(e.key == "Enter" && daynumber >= 5 && dragx === 0 && matrix4.m43 === 50){
 				await Queue.fire({currentProgressStep: 0,text: "Playground Entered! Find the clues to discover what happened."});
 				inroom = true;
 				frame = document.createElement("iframe");
