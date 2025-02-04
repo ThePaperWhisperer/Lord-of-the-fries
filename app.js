@@ -26,7 +26,7 @@ fire = new Image(500, 500);
 
 // Initialize Ably
 const ably = new Ably.Realtime('AUFTWw.lX4uEQ:N9x3o9blgYQF8Q70S2mwM_y3bENa3ijxFteTRHEX6-s');
-const channel = ably.channels.get('your-channel-name');
+const channel = ably.channels.get('lotf');
 
 // Example of subscribing to a message
 channel.subscribe('message', (message) => {

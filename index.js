@@ -5,9 +5,10 @@ const Ably = require('ably');
 
 // For the full code sample see here: https://github.com/ably/quickstart-js
 const ably = new Ably.Realtime('AUFTWw.lX4uEQ:N9x3o9blgYQF8Q70S2mwM_y3bENa3ijxFteTRHEX6-s');
+(async () => {
 await ably.connection.once('connected');
 console.log('Connected to Ably!');
-const channel = ably.channels.get('quickstart');
+const channel = ably.channels.get('lotf');
 
 
 const { addWords, isBad } = require("adults");
@@ -84,3 +85,4 @@ server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 	channel.subscribe("escape", per => {
 		channel.publish("escaped", per)
 	})
+})();
