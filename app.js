@@ -655,7 +655,7 @@ async function load() {
 			}
 			if(e.key == "w"){
 				e.preventDefault();
-				var element = document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[1];
+				var element = document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[0];
 				const mouseDownEvent = new MouseEvent('mousedown', {
   clientX: element.getBoundingClientRect().left+ dragx,
   clientY: element.getBoundingClientRect().top + dragy,
@@ -688,7 +688,7 @@ move()
 			}
 			if(e.key == "a"){
 				e.preventDefault();
-				var element = document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[1];
+				var element = document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[0];
 				const mouseDownEvent = new MouseEvent('mousedown', {
   clientX: element.getBoundingClientRect().left+ dragx,
   clientY: element.getBoundingClientRect().top + dragy,
@@ -720,7 +720,7 @@ move()
 			}
 			if(e.key == "s"){
 				e.preventDefault();
-				var element = document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[1];
+				var element = document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[0];
 				const mouseDownEvent = new MouseEvent('mousedown', {
   clientX: element.getBoundingClientRect().left+ dragx,
   clientY: element.getBoundingClientRect().top + dragy,
@@ -752,7 +752,7 @@ move()
 			}
 			if(e.key == "d"){
 				e.preventDefault();
-				var element = document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[1];
+				var element = document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[0];
 				const mouseDownEvent = new MouseEvent('mousedown', {
   clientX: element.getBoundingClientRect().left+ dragx,
   clientY: element.getBoundingClientRect().top + dragy,
