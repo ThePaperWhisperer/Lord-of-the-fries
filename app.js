@@ -24,17 +24,12 @@ const Queue = Swal.mixin({
 })
 fire = new Image(500, 500);
 
-// Initialize Ably
-const ably = new Ably.Realtime('AUFTWw.lX4uEQ:N9x3o9blgYQF8Q70S2mwM_y3bENa3ijxFteTRHEX6-s');
-const channel = ably.channels.get('lotf');
-
 // Example of subscribing to a message
 channel.subscribe('message', (message) => {
   console.log('Received message:', message.data);
 });
 
 // Example of publishing a message
-channel.publish('message', { text: 'Hello, Ably!' });
 
 fire.src = "fire.png";
 fire.style.zIndex = "400";
@@ -42,7 +37,6 @@ fire.style.top = "500px";
 fire.style.left = "1000px";
 var shelter;
 var night = false;
-var socket = io.connect();
 var img = new Image();
 img.src = "inside.jpg";
 img.style.height = "100vh";
@@ -267,7 +261,6 @@ async function hunt() {
 		}
 async function choose() {
 	
-	ss = new SpeechSynthesisUtterance("Hello "+ username +". Welcome to Survivor. We will pick you up in a month. OH NO WHAT IS THAT!!!!!!");
 }
 document.getElementById("dialog").hidden = false;
 document.getElementById("universe").hidden = true;
