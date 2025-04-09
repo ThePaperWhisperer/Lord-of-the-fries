@@ -1,4 +1,3 @@
-
 var flurry = [];
 var house = false;
 var task = document.getElementById("enemyhealth");
@@ -10,8 +9,8 @@ var firematrix;
 var esc = false, parts = 0;
 var timeout;
 var fire;
-var dragx = 0;
-var dragy = 0;
+		var dragx = 0;
+		var dragy = 0;
 var ss;
 var thirst = 0;
 const steps = ['1', '2', '3', "4"]
@@ -23,20 +22,13 @@ const Queue = Swal.mixin({
   hideClass: { backdrop: 'swal2-noanimation' },
 })
 fire = new Image(500, 500);
-
-// Example of subscribing to a message
-channel.subscribe('message', (message) => {
-  console.log('Received message:', message.data);
-});
-
-// Example of publishing a message
-
 fire.src = "fire.png";
 fire.style.zIndex = "400";
 fire.style.top = "500px";
 fire.style.left = "1000px";
 var shelter;
 var night = false;
+var socket = io.connect();
 var img = new Image();
 img.src = "inside.jpg";
 img.style.height = "100vh";
@@ -187,7 +179,7 @@ async function battle(){
 					ending.hidden = false;
 						ending.play();
 					ending.onended =  () => {
-						channel.publish("escape", username)
+						socket.emit("escape", username)
 						
 						location.reload();
 					}
@@ -218,7 +210,7 @@ async function ended(audio) {
 		setTimeout(ended, 1000);
 	}
 }
-channel.subscribe("pmove", (data)=> {
+socket.on("pmove", (data)=> {
 	document.getElementById(data.person).style.transform = `matrix3d(${data.matrix})`
 })
 var ps = 0;
@@ -233,7 +225,7 @@ var otherplayer;
 async function rotate(){
 	document.getElementById("room").style.transform = `scale3d(3 3 3) translateZ(1000px) rotateY(${cy}deg) rotateX(${cx}deg)`;
 }
-channel.subscribe("roomnotjoined", async () =>{
+socket.on("roomnotjoined", async () =>{
 	await Queue.fire({currentProgressStep: 0,text: "Room not found, please try again..."});
 	
 	location.reload();
@@ -261,13 +253,26 @@ async function hunt() {
 		}
 async function choose() {
 	
+	ss = new SpeechSynthesisUtterance("Hello "+ username +". Welcome to Survivor. We will pick you up in a month. OH NO WHAT IS THAT!!!!!!");
 }
 document.getElementById("dialog").hidden = false;
 document.getElementById("universe").hidden = true;
 document.getElementById("text").hidden = true;
-document.getElementById("option").innerHTML = "Do You Want To Play?";
+document.getElementById("option").innerHTML = "Do You Want To Create A Room?";
 
-
+document.getElementById("ok").onclick = async () => {
+	document.body.style.backgroundImage = "url(sky.jpg)";
+	document.getElementById("dialog").hidden = true;
+		var {value: room} = await Queue.fire({currentProgressStep: 0,input: "text", text:"Choose a private room name."});
+	if(room){
+	var {value: password} = await Queue.fire({currentProgressStep: 1,input: "text", text:"Choose a password."});
+	}
+	var {value: username} = await Queue.fire({currentProgressStep: 2,input: "text", text:"Choose an username!"});
+	socket.emit("username", username);
+	socket.emit("roomname", room);
+	socket.emit("password", password);
+	
+};
 
 document.getElementById("neither").onclick = async () => {
 	document.body.style.backgroundImage = "url(sky.jpg)";
@@ -280,21 +285,34 @@ document.getElementById("neither").onclick = async () => {
 	for (var i = 0; i < 40; i++) {
 		link += characters.charAt(Math.floor(Math.random() * characters.length));
 	}
-	channel.publish("self", link);
+	socket.emit("self", link);
 	console.log(link);
 	
 load();
 	
 };
-
-channel.subscribe("start", load)
-channel.subscribe("usernotadded", async () => {
+document.getElementById("no").onclick = async () => {
+	document.body.style.backgroundImage = "url(sky.jpg)";
+		document.getElementById("dialog").hidden = true;
+	var {value:roomname} = await Queue.fire({currentProgressStep: 0,input: "text", text:"Enter the room name."});
+	if(roomname){
+	var {value: pass} = await Queue.fire({currentProgressStep: 1,input: "text", text:"Enter the room's password."});
+	}
+	var {value: username} = await Queue.fire({currentProgressStep: 2,input: "text", text:"Choose an username!"});
+	socket.emit("username", username);
+	
+	socket.emit("room", roomname);
+	socket.emit("pass", pass);
+	
+}
+socket.on("start", load)
+socket.on("usernotadded", async () => {
 	const {value: person} = await Queue.fire({currentProgressStep: 3,input: "text", text:
 		"Choose a new username. Your old one was either taken, inappropriate, or blank!"
 			   });
-	channel.publish("username", person);
+	socket.emit("username", person);
 });
-channel.subscribe("roomclosed", async (data) => {
+socket.on("roomclosed", async (data) => {
 	if (
 		typeof users[0 + data.number] != "undefined" &&
 		typeof users[1 + data.number] != "undefined" &&
@@ -316,14 +334,14 @@ channel.subscribe("roomclosed", async (data) => {
 	}
 });
 var frame;
-channel.subscribe("useradded", (u) => {
+socket.on("useradded", (u) => {
 	users = u;
 });
-channel.subscribe("left", async (leaving) => {
+socket.on("left", async (leaving) => {
 	await Queue.fire({currentProgressStep: 0,text:leaving + " left."});
 
 });
-channel.subscribe("joinedroom", async (per) => {
+socket.on("joinedroom", async (per) => {
 	await Queue.fire({currentProgressStep: 0,text:per + " joined."});
 	const player = document.getElementById("player").cloneNode(true);
 	player.id = per;
@@ -336,10 +354,10 @@ channel.subscribe("joinedroom", async (per) => {
 	player.hidden = false;
 	document.getElementById("universe").appendChild(player);
 });
-channel.subscribe("leave", (u) => {
+socket.on("leave", (u) => {
 	users = u;
 });
-channel.subscribe("gameover", async (killed) => {
+socket.on("gameover", async (killed) => {
 	await Queue.fire({currentProgressStep: 0,text: killed + " died."});
 });
 var t;
@@ -516,7 +534,7 @@ async function load() {
 				setTimeout(async () => {
 					fire.remove();
 				}, 60000);
-			channel.publish("fire", firematrix);
+			socket.emit("fire", firematrix);
 			}
 			if(e.key == "x" && fire.style.position ==="absolute" && daynumber >= 2){
 				if(firematrix.m41 === matrix4.m41 && firematrix.m43 === matrix4.m43 ){
@@ -602,7 +620,7 @@ async function load() {
 				tasks.innerHTML = "Find food";
 				await Queue.fire({currentProgressStep: 2,text: "Go bring some food back home. Go hunting for food in a space by pressing 'h'."});
 				
-				channel.publish("house", sheltermatrix);
+				socket.emit("house", sheltermatrix);
 			}
 			if(e.key == "h"){
 				hunt();
@@ -648,7 +666,7 @@ async function load() {
 			}
 			if(e.key == "w"){
 				e.preventDefault();
-				var element = document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[0];
+				var element = document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[1];
 				const mouseDownEvent = new MouseEvent('mousedown', {
   clientX: element.getBoundingClientRect().left+ dragx,
   clientY: element.getBoundingClientRect().top + dragy,
@@ -681,7 +699,7 @@ move()
 			}
 			if(e.key == "a"){
 				e.preventDefault();
-				var element = document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[0];
+				var element = document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[1];
 				const mouseDownEvent = new MouseEvent('mousedown', {
   clientX: element.getBoundingClientRect().left+ dragx,
   clientY: element.getBoundingClientRect().top + dragy,
@@ -713,7 +731,7 @@ move()
 			}
 			if(e.key == "s"){
 				e.preventDefault();
-				var element = document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[0];
+				var element = document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[1];
 				const mouseDownEvent = new MouseEvent('mousedown', {
   clientX: element.getBoundingClientRect().left+ dragx,
   clientY: element.getBoundingClientRect().top + dragy,
@@ -745,7 +763,7 @@ move()
 			}
 			if(e.key == "d"){
 				e.preventDefault();
-				var element = document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[0];
+				var element = document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[1];
 				const mouseDownEvent = new MouseEvent('mousedown', {
   clientX: element.getBoundingClientRect().left+ dragx,
   clientY: element.getBoundingClientRect().top + dragy,
@@ -792,7 +810,7 @@ move()
 				window.getComputedStyle(document.getElementById("universe")).transform
 			);
 			sol1 = document.getElementById("panther");
-			channel.publish("move", matrix4);
+			socket.emit("move", matrix4);
 			document.getElementById("coordinates").innerHTML = `You are at X: ${-dragx} Z: ${matrix4.m43}`;
 		}
 		
@@ -851,11 +869,11 @@ document.getElementById("message").onkeydown = async (e) => {
 		p.style.zIndex = "101";
 		p.style.width = "5vw";
 		p.style.left = "75%";
-		channel.publish("message", { message: newmessage, user: username });
+		socket.emit("message", { message: newmessage, user: username });
 		document.getElementById("messages").appendChild(p);
 	}
 };
-channel.subscribe('newmessage', async (messagenew) => {
+socket.on('newmessage', async (messagenew) => {
 	p = document.createElement("p");
 	newmessage = messagenew.user + ": " + messagenew.message;
 	p.innerHTML = newmessage;
@@ -871,7 +889,7 @@ channel.subscribe('newmessage', async (messagenew) => {
 });
 var shelter2, fire2;
 
-channel.subscribe("firemade",async (player)=>{
+socket.on("firemade",async (player)=>{
 	await Queue.fire({currentProgressStep: 0,text: "Someone made a fire. It is at X: " + -player.m41 + ", Z: " + -player.m43});
 	fire2.style.position = "absolute";
 				fire2.style.transform = "translate3d(" + player.m41 + "px, " + player.m42 + "px, " + player.m43 + "px) perspective(" + (player.m43 + 5000) + "px)";
@@ -885,7 +903,7 @@ channel.subscribe("firemade",async (player)=>{
 })
 var cx, cy;
 
-channel.subscribe("housemade", async(player)=>{
+socket.on("housemade", async(player)=>{
 	await Queue.fire({currentProgressStep: 0,text: "Someone made a house. It is at X: " + -player.m41 + ", Z: " + -player.m43});
 	
 	house = false;
@@ -916,111 +934,7 @@ channel.subscribe("housemade", async(player)=>{
   // want to be respectful there is no need to bother them anymore.
 }
 	  notifyMe();
-channel.subscribe("escaped", async (p)=> {
+socket.on("escaped", async (p)=> {
 	await Queue.fire({currentProgressStep: 0,text: p + " escaped!"})
 	
 })
-
-// Replace channel.subscribe with channel.subscribe
-channel.subscribe('firemade', async (player) => {
-  await Queue.fire({ currentProgressStep: 0, text: "Someone made a fire. It is at X: " + -player.m41 + ", Z: " + -player.m43 });
-  fire2.style.position = "absolute";
-  fire2.style.transform = "translate3d(" + player.m41 + "px, " + player.m42 + "px, " + player.m43 + "px) perspective(" + (player.m43 + 5000) + "px)";
-  document.getElementById("universe").appendChild(fire2);
-
-  task.value = 5;
-  task.max = 5;
-  setTimeout(async () => {
-    fire2.remove();
-  }, 60000);
-});
-
-channel.subscribe('housemade', async (player) => {
-  await Queue.fire({ currentProgressStep: 0, text: "Someone made a house. It is at X: " + -player.m41 + ", Z: " + -player.m43 });
-
-  house = false;
-  shelter2 = document.createElement("img");
-  shelter2.style.position = "absolute";
-  // Add the rest of your code here
-});
-
-channel.subscribe('pmove', (data) => {
-  document.getElementById(data.person).style.transform = `matrix3d(${data.matrix})`
-});
-
-channel.subscribe('roomnotjoined', async () => {
-  await Queue.fire({ currentProgressStep: 0, text: "Room not found, please try again..." });
-});
-
-channel.subscribe('usernotadded', async () => {
-  const { value: person } = await Queue.fire({ currentProgressStep: 3, input: "text", text: "Choose a new username. Your old one was either taken, inappropriate, or blank!" });
-  channel.publish('username', person);
-});
-
-channel.subscribe('roomclosed', async (data) => {
-  if (
-    typeof users[0 + data.number] != "undefined" &&
-    typeof users[1 + data.number] != "undefined" &&
-    typeof users[2 + data.number] != "undefined"
-  ) {
-    roomnumber = data.room;
-    var play = 0;
-    // Add the rest of your code here
-  }
-});
-
-channel.subscribe('newmessage', async (messagenew) => {
-  let p = document.createElement("p");
-  let newmessage = messagenew.user + ": " + messagenew.message;
-  p.innerHTML = newmessage;
-  p.style.width = "5vw";
-  p.style.color = "red";
-  p.style.left = "25%";
-  p.style.overflowWrap = "anywhere";
-  p.style.position = "relative";
-  p.style.zIndex = "101";
-  document.getElementById("messages").appendChild(p);
-  const notification = new Notification(newmessage);
-});
-
-channel.subscribe('useradded', (u) => {
-  users = u;
-});
-
-channel.subscribe('left', async (leaving) => {
-  await Queue.fire({ currentProgressStep: 0, text: leaving + " left." });
-});
-
-channel.subscribe('joinedroom', async (per) => {
-  await Queue.fire({ currentProgressStep: 0, text: per + " joined." });
-  const player = document.getElementById("player").cloneNode(true);
-  player.id = per;
-  Array.from(player.children)[0].innerHTML = per;
-  player.style.zIndex = "20";
-  player.style.height = "100000px";
-  player.style.width = "60000px";
-  player.style.position = "absolute";
-  // Add the rest of your code here
-});
-
-channel.subscribe('gameover', async (killed) => {
-  await Queue.fire({ currentProgressStep: 0, text: killed + " died." });
-});
-
-document.getElementById("message").onkeydown = async (e) => {
-  if (e.key == "Enter") {
-    let message = document.getElementById("message").value;
-    document.getElementById("message").value = "";
-    let p = document.createElement("p");
-    let newmessage = message;
-    p.style.overflowWrap = "anywhere";
-    p.innerHTML = "You: " + message;
-    p.style.color = "blue";
-    p.style.position = "relative";
-    p.style.zIndex = "101";
-    p.style.width = "5vw";
-    p.style.left = "75%";
-    channel.publish('message', { message: newmessage, user: username });
-    document.getElementById("messages").appendChild(p);
-  }
-};
