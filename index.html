@@ -15,6 +15,7 @@
 	<script src="https://rawgit.com/jquery/jquery-ui/1-11-stable/external/jquery-simulate/jquery.simulate.js"></script>
 	<link rel="stylesheet" href="style.css">
 		<link rel="manifest" href="manifest.json" />
+			<script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
 
 <style>
 	
@@ -156,7 +157,7 @@
 	#room *{
 		z-index: 100;
 	}
-	#iframe{
+	a-sky{
 		z-index: 100;
 	}
 </style>
@@ -179,8 +180,13 @@
 		<button id="neither">Play Alone</button>
 	</div>
 		<div id="universe">
-			<iframe style="height: 150vh; width: 150vw" scrolling="no" src="bg.html?v=2"></iframe>
-			<div id="world">
+			<a-scene>
+				<a-assets>
+				  <img id="sky" src="bg.jpeg">
+				</a-assets>
+				<a-sky src="#sky"></a-sky>
+			  </a-scene>
+			  			<div id="world">
 			<img id="panther" hidden="true" src="soldier.png" class="soldier"/>
 			<div id="mainDiv">
 				<div id="boxDiv" class="cell">
