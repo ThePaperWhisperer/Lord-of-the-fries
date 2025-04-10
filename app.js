@@ -720,6 +720,9 @@ async function load() {
 		document.getElementById("universe").hidden = false;
 		document.getElementById("text").hidden = false;
 	})
+}
+}
+
 var message, p2, p, newmessage;
 
 document.getElementById("message").onkeydown = async (e) => {
