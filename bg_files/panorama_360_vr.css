@@ -1,0 +1,8 @@
+
+/* --- a-frame styles override ---*/
+/* disable AR (phone camera view as background) button, as for Panorama it does not make sense */
+div.a-enter-ar {
+  /* visibility: hidden; */
+  display: none;
+}
+/* --------- */
