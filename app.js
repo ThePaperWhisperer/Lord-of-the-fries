@@ -469,7 +469,7 @@ async function load() {
 	day.style.left = "50%";
 	document.body.appendChild(day);
 	setTimeout(async () => {
-		document.querySelector("a-scene").hidden = false
+		document.querySelector("a-sky").hidden = false
 		for (var i = 0; i < 5; i++) {
 			wood = document.createElement("div");
 			wood.setAttribute("id", i);
