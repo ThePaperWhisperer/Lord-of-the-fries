@@ -662,6 +662,36 @@ async function load() {
 				}
 
 			}
+			if(e.key == "w"){
+				e.preventDefault();
+		
+				
+				if (dragy >-3000) dragy-=50;
+
+
+			}
+			if(e.key == "a"){
+				e.preventDefault();
+	
+				if (dragx<3000) dragx+=50;
+
+
+
+			}
+			if(e.key == "s"){
+				e.preventDefault();
+		
+				if (dragy <3000) dragy+=50;
+
+
+
+			}
+			if(e.key == "d"){
+				e.preventDefault();
+	
+				if (dragx >-3000) dragx-=50;
+
+			}
 			
 			if(e.key == "r" && daynumber >= 3 && a === 0 && dragx === 0){
 				await Queue.fire({currentProgressStep: 0,text: "Your thirst went down by 5."});
