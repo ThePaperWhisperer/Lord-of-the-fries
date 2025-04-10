@@ -463,7 +463,7 @@ async function load() {
 	document.getElementById("heli").pause();
 	document.getElementById("boom").play();
 	day.innerHTML = "Day " + daynumber + ". Use the WASD keys to look around, the arrows up and down to move, and space to search for resources.";
-	day.style.color = "black";
+	day.style.color = "white";
 	day.style.position = "absolute";
 	day.style.zIndex = "140";
 	day.style.width = "50vw";
