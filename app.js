@@ -591,7 +591,7 @@ async function load() {
 			}
 			if(e.key == "w"){
 				e.preventDefault();
-				var element = document.querySelector("iframe").contentWindow.document
+				var element = document.querySelector("iframe").contentWindow.document.querySelector("#viewer");
 				const mouseDownEvent = new MouseEvent('mousedown', {
   clientX:  dragx,
   clientY:  dragy,
@@ -624,7 +624,7 @@ move()
 			}
 			if(e.key == "a"){
 				e.preventDefault();
-				var element = document.querySelector("iframe").contentWindow.document
+				var element = document.querySelector("iframe").contentWindow.document.querySelector("#viewer");
 				const mouseDownEvent = new MouseEvent('mousedown', {
   clientX:  dragx,
   clientY:  dragy,
@@ -656,7 +656,7 @@ move()
 			}
 			if(e.key == "s"){
 				e.preventDefault();
-				var element = document.querySelector("iframe").contentWindow.document
+				var element = document.querySelector("iframe").contentWindow.document.querySelector("#viewer");
 				const mouseDownEvent = new MouseEvent('mousedown', {
   clientX:  dragx,
   clientY:  dragy,
@@ -688,7 +688,7 @@ move()
 			}
 			if(e.key == "d"){
 				e.preventDefault();
-				var element = document.querySelector("iframe").contentWindow.document
+				var element = document.querySelector("iframe").contentWindow.document.querySelector("#viewer");
 				const mouseDownEvent = new MouseEvent('mousedown', {
   clientX:  dragx,
   clientY:  dragy,
