@@ -447,7 +447,6 @@ clearTimeout(timeout)
 
 var rot = 0;
 async function move(){
-	document.getElementById("universe").style.transform = "translate3d(" + b + "px, " + y + "px, " + a + "px) perspective(" + ( a +5000) + "px) rotateX("+dragy/2 +"deg) rotateY("+ dragx/2+"deg)"
 }
 async function load() {
 	document.getElementById("heli").play();
