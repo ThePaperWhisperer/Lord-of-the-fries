@@ -15,7 +15,6 @@
 	<script src="https://rawgit.com/jquery/jquery-ui/1-11-stable/external/jquery-simulate/jquery.simulate.js"></script>
 	<link rel="stylesheet" href="style.css">
 		<link rel="manifest" href="manifest.json" />
-			<script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
 
 <style>
 	
@@ -155,9 +154,8 @@
 		width: 50px;
 	}
 	#room *{
-		z-index: 100;
+		zIndex: 100;
 	}
-	
 </style>
 	
 </head>
@@ -178,17 +176,20 @@
 		<button id="neither">Play Alone</button>
 	</div>
 		<div id="universe">
-			<a-scene>
-				<a-assets>
-				  <img id="sky" hidden src="bg.jpeg">
-				</a-assets>
-				<a-sky hidden wasd-controls="" src="#sky"></a-sky>
-			  </a-scene>
-
+			<div id="world">
+			<img id="panther" hidden="true" src="soldier.png" class="soldier"/>
+			<div id="mainDiv">
+				<div id="boxDiv" class="cell">
+					<div id="bottom"></div>
+					<img id="tree" hidden="true" class="tree" src="fry.png" />
+				</div>
+			</div>
+		</div>
 			<div id="modeldiv">
-				<model-viewer hidden id="model" src="building.glb"></model-viewer>
+				<model-viewer id="model" src="building.glb"></model-viewer>
 			</div>
 	</div>
+		<iframe style="height: 150vh; width: 150vw" scrolling="no" src="bg.html"></iframe>
 
 		<model-viewer id="hunter" style="z-index: 100000;display: none; position: absolute; height: 300px; width: 300px" src="hunter.glb"></model-viewer>
 		<img id="ex" src="explosion.png" hidden="true"/>
@@ -246,7 +247,7 @@
 <div id="night" style="position: absolute; background-color: black; opacity: 0%; z-index: 1000; height: 100vh; width: 100vw;"></div>
 
 
-	<script src="app.js?v=5"></script>
+	<script src="app.js?v=4"></script>
 </body>
 
 </html>
