@@ -28,7 +28,6 @@ fire.style.top = "500px";
 fire.style.left = "1000px";
 var shelter;
 var night = false;
-var socket = io.connect();
 var img = new Image();
 img.src = "inside.jpg";
 img.style.height = "100vh";
@@ -179,7 +178,6 @@ async function battle(){
 					ending.hidden = false;
 						ending.play();
 					ending.onended =  () => {
-						socket.emit("escape", username)
 						
 						location.reload();
 					}
@@ -210,9 +208,6 @@ async function ended(audio) {
 		setTimeout(ended, 1000);
 	}
 }
-socket.on("pmove", (data)=> {
-	document.getElementById(data.person).style.transform = `matrix3d(${data.matrix})`
-})
 var ps = 0;
 var hunts = 0;
 var sol1 = document.getElementById("panther");
@@ -225,11 +220,7 @@ var otherplayer;
 async function rotate(){
 	document.getElementById("room").style.transform = `scale3d(3 3 3) translateZ(1000px) rotateY(${cy}deg) rotateX(${cx}deg)`;
 }
-socket.on("roomnotjoined", async () =>{
-	await Queue.fire({currentProgressStep: 0,text: "Room not found, please try again..."});
-	
-	location.reload();
-});
+
 async function foodget(){
 	food++;
 }
@@ -268,10 +259,7 @@ document.getElementById("ok").onclick = async () => {
 	var {value: password} = await Queue.fire({currentProgressStep: 1,input: "text", text:"Choose a password."});
 	}
 	var {value: username} = await Queue.fire({currentProgressStep: 2,input: "text", text:"Choose an username!"});
-	socket.emit("username", username);
-	socket.emit("roomname", room);
-	socket.emit("password", password);
-	
+
 };
 
 document.getElementById("neither").onclick = async () => {
@@ -285,7 +273,6 @@ document.getElementById("neither").onclick = async () => {
 	for (var i = 0; i < 40; i++) {
 		link += characters.charAt(Math.floor(Math.random() * characters.length));
 	}
-	socket.emit("self", link);
 	console.log(link);
 	
 load();
@@ -299,67 +286,9 @@ document.getElementById("no").onclick = async () => {
 	var {value: pass} = await Queue.fire({currentProgressStep: 1,input: "text", text:"Enter the room's password."});
 	}
 	var {value: username} = await Queue.fire({currentProgressStep: 2,input: "text", text:"Choose an username!"});
-	socket.emit("username", username);
 	
-	socket.emit("room", roomname);
-	socket.emit("pass", pass);
 	
 }
-socket.on("start", load)
-socket.on("usernotadded", async () => {
-	const {value: person} = await Queue.fire({currentProgressStep: 3,input: "text", text:
-		"Choose a new username. Your old one was either taken, inappropriate, or blank!"
-			   });
-	socket.emit("username", person);
-});
-socket.on("roomclosed", async (data) => {
-	if (
-		typeof users[0 + data.number] != "undefined" &&
-		typeof users[1 + data.number] != "undefined" &&
-		typeof users[2 + data.number] != "undefined"
-	) {
-		
-		roomnumber = data.room;
-		var play = 0;
-		users.forEach((player) => {
-			player = document.getElementById("score").cloneNode(true);
-			player.id = users[play + data.number];
-			player.value = users[play + data.number] + ": 0";
-			console.log(users[play + data.number]);
-			player.classList.add("score");
-			player.style.marginBottom = "100px";
-			document.body.insertBefore(player, document.getElementById("universe"));
-			play++;
-		});
-	}
-});
-var frame;
-socket.on("useradded", (u) => {
-	users = u;
-});
-socket.on("left", async (leaving) => {
-	await Queue.fire({currentProgressStep: 0,text:leaving + " left."});
-
-});
-socket.on("joinedroom", async (per) => {
-	await Queue.fire({currentProgressStep: 0,text:per + " joined."});
-	const player = document.getElementById("player").cloneNode(true);
-	player.id = per;
-	Array.from(player.children)[0].innerHTML = per;
-	player.style.zIndex = "20";
-	player.style.height = "100000px";
-	player.style.width = "60000px";
-	player.style.position = "absolute";
-	player.style.transformStyle = "preserve-3d";
-	player.hidden = false;
-	document.getElementById("universe").appendChild(player);
-});
-socket.on("leave", (u) => {
-	users = u;
-});
-socket.on("gameover", async (killed) => {
-	await Queue.fire({currentProgressStep: 0,text: killed + " died."});
-});
 var t;
 var day = document.createElement("h1");
 var daynumber = 1;
@@ -532,7 +461,6 @@ async function load() {
 				setTimeout(async () => {
 					fire.remove();
 				}, 60000);
-			socket.emit("fire", firematrix);
 			}
 			if(e.key == "x" && fire.style.position ==="absolute" && daynumber >= 2){
 				if(firematrix.m41 === matrix4.m41 && firematrix.m43 === matrix4.m43 ){
@@ -618,7 +546,6 @@ async function load() {
 				tasks.innerHTML = "Find food";
 				await Queue.fire({currentProgressStep: 2,text: "Go bring some food back home. Go hunting for food in a space by pressing 'h'."});
 				
-				socket.emit("house", sheltermatrix);
 			}
 			if(e.key == "h"){
 				hunt();
@@ -808,7 +735,6 @@ move()
 				window.getComputedStyle(document.getElementById("universe")).transform
 			);
 			sol1 = document.getElementById("panther");
-			socket.emit("move", matrix4);
 			document.getElementById("coordinates").innerHTML = `You are at X: ${-dragx} Z: ${matrix4.m43}`;
 		}
 		
@@ -867,55 +793,15 @@ document.getElementById("message").onkeydown = async (e) => {
 		p.style.zIndex = "101";
 		p.style.width = "5vw";
 		p.style.left = "75%";
-		socket.emit("message", { message: newmessage, user: username });
 		document.getElementById("messages").appendChild(p);
 	}
 };
-socket.on('newmessage', async (messagenew) => {
-	p = document.createElement("p");
-	newmessage = messagenew.user + ": " + messagenew.message;
-	p.innerHTML = newmessage;
-	p.style.width = "5vw";
-	p.style.color = "red";
-	p.style.left = "25%";
-	p.style.overflowWrap = "anywhere";
-	p.style.position = "relative";
-	p.style.zIndex = "101";
-	document.getElementById("messages").appendChild(p);
-	        const notification = new Notification(newmessage);
 
-});
 var shelter2, fire2;
 
-socket.on("firemade",async (player)=>{
-	await Queue.fire({currentProgressStep: 0,text: "Someone made a fire. It is at X: " + -player.m41 + ", Z: " + -player.m43});
-	fire2.style.position = "absolute";
-				fire2.style.transform = "translate3d(" + player.m41 + "px, " + player.m42 + "px, " + player.m43 + "px) perspective(" + (player.m43 + 5000) + "px)";
-				document.getElementById("universe").appendChild(fire2);
-	
-				task.value = 5;
-				task.max = 5;
-				setTimeout(async () => {
-					fire2.remove();
-				}, 60000);
-})
 var cx, cy;
 
-socket.on("housemade", async(player)=>{
-	await Queue.fire({currentProgressStep: 0,text: "Someone made a house. It is at X: " + -player.m41 + ", Z: " + -player.m43});
-	
-	house = false;
-				shelter2 = document.createElement("img");
-				shelter2.style.position = "absolute";
-				shelter2.style.zIndex = "8";
-				shelter2.src = "shack.png";
-				shelter2.style.left = "200px";
-				shelter2.style.top = "200px";
-				shelter2.style.transform = "translate3d(" + player.m41 + "px, " + player.m42 + "px, " + player.m43 + "px) perspective(" + (player.m43 + 5000) + "px)";
-				document.getElementById("universe").appendChild(shelter2);
-				tasks.innerHTML = "Find food";
-	
-})
+
  async function notifyMe() {
   if (!("Notification" in window)) {
   } else if (Notification.permission !== "denied") {
@@ -932,7 +818,3 @@ socket.on("housemade", async(player)=>{
   // want to be respectful there is no need to bother them anymore.
 }
 	  notifyMe();
-socket.on("escaped", async (p)=> {
-	await Queue.fire({currentProgressStep: 0,text: p + " escaped!"})
-	
-})
