@@ -1,65 +1,27 @@
-<!DOCTYPE html>
-<html>
 <head>
-    <title>Movable Panorama Skybox with Ease</title>
-    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
-    <script>
-        AFRAME.registerComponent('movable-panorama', {
-            init: function () {
-                this.el.setAttribute('rotation', '0 0 0'); // Start at 0 rotation
-                this.isDragging = false;
-                this.previousMouseEvent = null;
+    <!-- for optimal display on high DPI devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-                // For easing
-                this.targetRotationY = 0;
-                this.currentRotationY = 0;
-                this.easeFactor = 0.05; // Smaller value = more easing
-
-                this.onMouseDown = this.onMouseDown.bind(this);
-                this.onMouseMove = this.onMouseMove.bind(this);
-                this.onMouseUp = this.onMouseUp.bind(this);
-
-                this.el.sceneEl.addEventListener('mousedown', this.onMouseDown);
-                this.el.sceneEl.addEventListener('mousemove', this.onMouseMove);
-                this.el.sceneEl.addEventListener('mouseup', this.onMouseUp);
-            },
-
-            tick: function () {
-                // Apply easing to the rotation
-                this.currentRotationY += (this.targetRotationY - this.currentRotationY) * this.easeFactor;
-                this.el.setAttribute('rotation', `0 ${this.currentRotationY} 0`);
-            },
-
-            onMouseDown: function (evt) {
-                if (evt.button === 0) { // Left mouse button
-                    this.isDragging = true;
-                    this.previousMouseEvent = evt;
-                }
-            },
-
-            onMouseMove: function (evt) {
-                if (this.isDragging) {
-                    const movementX = evt.clientX - this.previousMouseEvent.clientX;
-                    // Adjust sensitivity as needed
-                    this.targetRotationY -= movementX * 0.1; // Rotate faster with larger multiplier
-                    this.previousMouseEvent = evt;
-                }
-            },
-
-            onMouseUp: function () {
-                this.isDragging = false;
-            }
-        });
-    </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/core/index.min.css" />
 </head>
-<body>
-    <a-scene>
-        <a-sky
-            src="bg.jpeg"
-            movable-panorama
-        ></a-sky>
 
-        <a-camera look-controls="enabled: false"></a-camera>
-    </a-scene>
-</body>
-</html>
+<!-- the viewer container must have a defined size -->
+<div id="viewer" style="width: 100vw; height: 100vh;"></div>
+
+<script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three/build/three.module.js",
+            "@photo-sphere-viewer/core": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/core/index.module.js"
+        }
+    }
+</script>
+
+<script type="module">
+    import { Viewer } from '@photo-sphere-viewer/core';
+
+    const viewer = new Viewer({
+        container: document.querySelector('#viewer'),
+        panorama: 'path/to/panorama.jpg',
+    });
+</script>
