@@ -656,7 +656,7 @@ move()
 			}
 			if(e.key == "s"){
 				e.preventDefault();
-				var element = document.querySelector("iframe").contentWindow.document.querySelector("#viewer");
+				var element = document.querySelector("iframe").contentWindow.document.querySelector(".psv--capture-event");
 				const mouseDownEvent = new MouseEvent('mousedown', {
   clientX:  dragx,
   clientY:  dragy,
