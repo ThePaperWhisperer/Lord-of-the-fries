@@ -447,6 +447,8 @@ clearTimeout(timeout)
 
 var rot = 0;
 async function move(){
+	document.getElementById("universe").style.transform = "translate3d(" + b + "px, " + y + "px, " + a + "px) perspective(" + ( a +5000) + "px) rotateX("+dragy/2 +"deg) rotateY("+ dragx/2+"deg)"
+	document.querySelector("iframe").style.transform = "translate3d(" + b + "px, " + y + "px, " + a + "px) perspective(" + ( a +5000) + "px)"
 }
 async function load() {
 	document.getElementById("heli").play();
@@ -461,7 +463,7 @@ async function load() {
 	document.getElementById("heli").pause();
 	document.getElementById("boom").play();
 	day.innerHTML = "Day " + daynumber + ". Use the WASD keys to look around, the arrows up and down to move, and space to search for resources.";
-	day.style.color = "white";
+	day.style.color = "black";
 	day.style.position = "absolute";
 	day.style.zIndex = "140";
 	day.style.width = "50vw";
@@ -469,8 +471,6 @@ async function load() {
 	day.style.left = "50%";
 	document.body.appendChild(day);
 	setTimeout(async () => {
-		document.querySelector("#sky").hidden = false
-		document.querySelector("a-sky").hidden = false
 		for (var i = 0; i < 5; i++) {
 			wood = document.createElement("div");
 			wood.setAttribute("id", i);
@@ -666,33 +666,131 @@ async function load() {
 			}
 			if(e.key == "w"){
 				e.preventDefault();
-		
+				var element = document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[1];
+				const mouseDownEvent = new MouseEvent('mousedown', {
+  clientX: element.getBoundingClientRect().left+ dragx,
+  clientY: element.getBoundingClientRect().top + dragy,
+  bubbles: true,
+  cancelable: true
+});
 				
 				if (dragy >-3000) dragy-=50;
 
+const mouseMoveEvent = new MouseEvent('mousemove', {
+  clientX: element.getBoundingClientRect().left + dragx,
+  clientY: element.getBoundingClientRect().top + dragy,
+  bubbles: true,
+  cancelable: true
+});
+
+const mouseUpEvent = new MouseEvent('mouseup', {
+  bubbles: true,
+  cancelable: true
+});
+				element.dispatchEvent(mouseDownEvent);
+
+// For mousemove, the listener may be the parent or even the document
+element.dispatchEvent(mouseMoveEvent);
+
+// Dispatch mouseup to terminate the process
+element.dispatchEvent(mouseUpEvent);
+move() 
 
 			}
 			if(e.key == "a"){
 				e.preventDefault();
-	
+				var element = document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[1];
+				const mouseDownEvent = new MouseEvent('mousedown', {
+  clientX: element.getBoundingClientRect().left+ dragx,
+  clientY: element.getBoundingClientRect().top + dragy,
+  bubbles: true,
+  cancelable: true
+});
 				if (dragx<3000) dragx+=50;
 
+const mouseMoveEvent = new MouseEvent('mousemove', {
+  clientX: element.getBoundingClientRect().left + dragx,
+  clientY: element.getBoundingClientRect().top + dragy,
+  bubbles: true,
+  cancelable: true
+});
 
+const mouseUpEvent = new MouseEvent('mouseup', {
+  bubbles: true,
+  cancelable: true
+});
+				element.dispatchEvent(mouseDownEvent);
+
+// For mousemove, the listener may be the parent or even the document
+element.dispatchEvent(mouseMoveEvent);
+
+// Dispatch mouseup to terminate the process
+element.dispatchEvent(mouseUpEvent);
+move() 
 
 			}
 			if(e.key == "s"){
 				e.preventDefault();
-		
+				var element = document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[1];
+				const mouseDownEvent = new MouseEvent('mousedown', {
+  clientX: element.getBoundingClientRect().left+ dragx,
+  clientY: element.getBoundingClientRect().top + dragy,
+  bubbles: true,
+  cancelable: true
+});
 				if (dragy <3000) dragy+=50;
 
+const mouseMoveEvent = new MouseEvent('mousemove', {
+  clientX: element.getBoundingClientRect().left + dragx,
+  clientY: element.getBoundingClientRect().top + dragy,
+  bubbles: true,
+  cancelable: true
+});
 
+const mouseUpEvent = new MouseEvent('mouseup', {
+  bubbles: true,
+  cancelable: true
+});
+				element.dispatchEvent(mouseDownEvent);
+
+// For mousemove, the listener may be the parent or even the document
+element.dispatchEvent(mouseMoveEvent);
+
+// Dispatch mouseup to terminate the process
+element.dispatchEvent(mouseUpEvent);
+move() 
 
 			}
 			if(e.key == "d"){
 				e.preventDefault();
-	
+				var element = document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[1];
+				const mouseDownEvent = new MouseEvent('mousedown', {
+  clientX: element.getBoundingClientRect().left+ dragx,
+  clientY: element.getBoundingClientRect().top + dragy,
+  bubbles: true,
+  cancelable: true
+});
 				if (dragx >-3000) dragx-=50;
 
+const mouseMoveEvent = new MouseEvent('mousemove', {
+  clientX: element.getBoundingClientRect().left + dragx,
+  clientY: element.getBoundingClientRect().top + dragy,
+  bubbles: true,
+  cancelable: true
+});
+
+const mouseUpEvent = new MouseEvent('mouseup', {
+  bubbles: true,
+  cancelable: true
+});
+				element.dispatchEvent(mouseDownEvent);
+
+// For mousemove, the listener may be the parent or even the document
+element.dispatchEvent(mouseMoveEvent);
+
+// Dispatch mouseup to terminate the process
+element.dispatchEvent(mouseUpEvent);
+move() 
 			}
 			
 			if(e.key == "r" && daynumber >= 3 && a === 0 && dragx === 0){
@@ -720,10 +818,42 @@ async function load() {
 
 		document.getElementById("universe").hidden = false;
 		document.getElementById("text").hidden = false;
-	})
-}
-}
+		var dirt = document.getElementById("boxDiv");
+		var rows = document.getElementById("mainDiv");
+		var dirtnew;
+		for (var i = 0; i < 3000; i += 50) {
+			dirtnew = dirt.cloneNode(true);
+			dirtnew.style.transform =
+				"translateY(" + -i + "px) translateX(" + (i - 1000) + "px)";
+			dirtnew.style.height = "50px";
+			dirtnew.style.width = "50px";
+			dirtnew.style.transformStyle = "preserve-3d";
+			rows.appendChild(dirtnew);
+		}
+		var newrow;
+		var z = 0;
+		while (z < 60) {
+			z++;
+			newrow = rows.cloneNode(true);
+			newrow.style.top = "100px";
+			newrow.style.height = "1000px";
+			newrow.style.width = "1000px";
+			newrow.style.transformStyle = "preserve-3d";
+			newrow.style.perspective = "800px";
+			newrow.style.position = "absolute";
+			newrow.style.transform =
+				"rotateX(180deg) translateY(1000px) perspective(3000px) translateZ(" +
+				(z * 50 + 1000) +
+				"px)";
 
+			document.getElementById("world").appendChild(newrow);
+		}
+
+		
+	}, 5000);
+
+	}
+}
 var message, p2, p, newmessage;
 
 document.getElementById("message").onkeydown = async (e) => {
