@@ -552,7 +552,7 @@ async function load() {
 			}
 
 
-			if(e.key == "Enter" && daynumber >= 5 && dragx === 0 && matrix4.m43 === 50){
+			if(e.key == "E" && daynumber >= 5 && dragx === 0 && matrix4.m43 === 0){
 				await Queue.fire({currentProgressStep: 0,text: "Playground Entered! Find the clues to discover what happened."});
 				inroom = true;
 				frame = document.createElement("iframe");
