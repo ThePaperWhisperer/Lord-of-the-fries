@@ -291,6 +291,7 @@ document.getElementById("no").onclick = async () => {
 }
 var t;
 var day = document.createElement("h1");
+day.style.color = "white";
 var daynumber = 1;
 var wood;
 var wood1;
