@@ -594,9 +594,9 @@ async function load() {
 				e.preventDefault();
 				var element = document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[0];
 				const mouseDownEvent = new MouseEvent('mousedown', {
-  movementX: -dragx,
+  movementX: dragx,
   movementY: dragy,
-  screenX: dragx,
+  screenX: -dragx,
   screenY: dragy,
   bubbles: true,
   cancelable: true
@@ -605,9 +605,9 @@ async function load() {
 				if (dragy >-3000) dragy-=50;
 
 const mouseMoveEvent = new MouseEvent('mousemove', {
-  movementX: -dragx,
+  movementX: dragx,
   movementY: dragy,
-  screenX: dragx,
+  screenX: -dragx,
   screenY: dragy,
   bubbles: true,
   cancelable: true
@@ -631,9 +631,9 @@ move()
 				e.preventDefault();
 				var element = document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[0];
 				const mouseDownEvent = new MouseEvent('mousedown', {
-  movementX: -dragx,
+  movementX: dragx,
   movementY: dragy,
-  screenX: dragx,
+  screenX: -dragx,
   screenY: dragy,
   bubbles: true,
   cancelable: true
@@ -641,9 +641,9 @@ move()
 				if (dragx<3000) dragx+=50;
 
 const mouseMoveEvent = new MouseEvent('mousemove', {
-  movementX: -dragx,
+  movementX: dragx,
   movementY: dragy,
-  screenX: dragx,
+  screenX: -dragx,
   screenY: dragy,
   bubbles: true,
   cancelable: true
@@ -667,9 +667,9 @@ move()
 				e.preventDefault();
 				var element = document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[0];
 				const mouseDownEvent = new MouseEvent('mousedown', {
-  movementX: -dragx,
+  movementX: dragx,
   movementY: dragy,
-  screenX: dragx,
+  screenX: -dragx,
   screenY: dragy,
   bubbles: true,
   cancelable: true
@@ -677,9 +677,9 @@ move()
 				if (dragy <3000) dragy+=50;
 
 const mouseMoveEvent = new MouseEvent('mousemove', {
-  movementX: -dragx,
+  movementX: dragx,
   movementY: dragy,
-  screenX: dragx,
+  screenX: -dragx,
   screenY: dragy,
   bubbles: true,
   cancelable: true
@@ -703,9 +703,9 @@ move()
 				e.preventDefault();
 				var element = document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[0];
 				const mouseDownEvent = new MouseEvent('mousedown', {
-  movementX: -dragx,
+  movementX: dragx,
   movementY: dragy,
-  screenX: dragx,
+  screenX: -dragx,
   screenY: dragy,
   bubbles: true,
   cancelable: true
@@ -713,9 +713,9 @@ move()
 				if (dragx >-3000) dragx-=50;
 
 const mouseMoveEvent = new MouseEvent('mousemove', {
-  movementX: -dragx,
+  movementX: dragx,
   movementY: dragy,
-  screenX: dragx,
+  screenX: -dragx,
   screenY: dragy,
   bubbles: true,
   cancelable: true
