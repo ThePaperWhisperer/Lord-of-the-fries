@@ -596,7 +596,7 @@ async function load() {
 				const mouseDownEvent = new MouseEvent('mousedown', {
   movementX: -dragx,
   movementY: dragy,
-  screenX: -dragx,
+  screenX: dragx,
   screenY: dragy,
   bubbles: true,
   cancelable: true
@@ -607,7 +607,7 @@ async function load() {
 const mouseMoveEvent = new MouseEvent('mousemove', {
   movementX: -dragx,
   movementY: dragy,
-  screenX: -dragx,
+  screenX: dragx,
   screenY: dragy,
   bubbles: true,
   cancelable: true
@@ -633,7 +633,7 @@ move()
 				const mouseDownEvent = new MouseEvent('mousedown', {
   movementX: -dragx,
   movementY: dragy,
-  screenX: -dragx,
+  screenX: dragx,
   screenY: dragy,
   bubbles: true,
   cancelable: true
@@ -643,7 +643,7 @@ move()
 const mouseMoveEvent = new MouseEvent('mousemove', {
   movementX: -dragx,
   movementY: dragy,
-  screenX: -dragx,
+  screenX: dragx,
   screenY: dragy,
   bubbles: true,
   cancelable: true
@@ -669,7 +669,7 @@ move()
 				const mouseDownEvent = new MouseEvent('mousedown', {
   movementX: -dragx,
   movementY: dragy,
-  screenX: -dragx,
+  screenX: dragx,
   screenY: dragy,
   bubbles: true,
   cancelable: true
@@ -679,7 +679,7 @@ move()
 const mouseMoveEvent = new MouseEvent('mousemove', {
   movementX: -dragx,
   movementY: dragy,
-  screenX: -dragx,
+  screenX: dragx,
   screenY: dragy,
   bubbles: true,
   cancelable: true
@@ -705,7 +705,7 @@ move()
 				const mouseDownEvent = new MouseEvent('mousedown', {
   movementX: -dragx,
   movementY: dragy,
-  screenX: -dragx,
+  screenX: dragx,
   screenY: dragy,
   bubbles: true,
   cancelable: true
@@ -715,7 +715,7 @@ move()
 const mouseMoveEvent = new MouseEvent('mousemove', {
   movementX: -dragx,
   movementY: dragy,
-  screenX: -dragx,
+  screenX: dragx,
   screenY: dragy,
   bubbles: true,
   cancelable: true
