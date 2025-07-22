@@ -627,7 +627,7 @@ element.dispatchEvent(mouseUpEvent);
 move() 
 
 			}
-			if(e.key == "a"){
+			if(e.key == "d"){
 				e.preventDefault();
 				var element = document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[0];
 				const mouseDownEvent = new MouseEvent('mousedown', {
@@ -699,7 +699,7 @@ element.dispatchEvent(mouseUpEvent);
 move() 
 
 			}
-			if(e.key == "d"){
+			if(e.key == "a"){
 				e.preventDefault();
 				var element = document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[0];
 				const mouseDownEvent = new MouseEvent('mousedown', {
