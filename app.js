@@ -594,8 +594,10 @@ async function load() {
 				e.preventDefault();
 				var element = document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[0];
 				const mouseDownEvent = new MouseEvent('mousedown', {
-  clientX:  dragx,
-  clientY:  dragy,
+  movementX: dragx,
+  movementY: dragy,
+  screenX: dragx,
+  screenY: dragy,
   bubbles: true,
   cancelable: true
 });
@@ -603,8 +605,10 @@ async function load() {
 				if (dragy >-3000) dragy-=50;
 
 const mouseMoveEvent = new MouseEvent('mousemove', {
-  clientX: dragx,
-  clientY:  dragy,
+  movementX: dragx,
+  movementY: dragy,
+  screenX: dragx,
+  screenY: dragy,
   bubbles: true,
   cancelable: true
 });
@@ -627,16 +631,20 @@ move()
 				e.preventDefault();
 				var element = document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[0];
 				const mouseDownEvent = new MouseEvent('mousedown', {
-  clientX:  dragx,
-  clientY:  dragy,
+  movementX: dragx,
+  movementY: dragy,
+  screenX: dragx,
+  screenY: dragy,
   bubbles: true,
   cancelable: true
 });
 				if (dragx<3000) dragx+=50;
 
 const mouseMoveEvent = new MouseEvent('mousemove', {
-  clientX: dragx,
-  clientY:  dragy,
+  movementX: dragx,
+  movementY: dragy,
+  screenX: dragx,
+  screenY: dragy,
   bubbles: true,
   cancelable: true
 });
@@ -659,16 +667,20 @@ move()
 				e.preventDefault();
 				var element = document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[0];
 				const mouseDownEvent = new MouseEvent('mousedown', {
-  clientX:  dragx,
-  clientY:  dragy,
+  movementX: dragx,
+  movementY: dragy,
+  screenX: dragx,
+  screenY: dragy,
   bubbles: true,
   cancelable: true
 });
 				if (dragy <3000) dragy+=50;
 
 const mouseMoveEvent = new MouseEvent('mousemove', {
-  clientX: dragx,
-  clientY:  dragy,
+  movementX: dragx,
+  movementY: dragy,
+  screenX: dragx,
+  screenY: dragy,
   bubbles: true,
   cancelable: true
 });
@@ -691,16 +703,20 @@ move()
 				e.preventDefault();
 				var element = document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[0];
 				const mouseDownEvent = new MouseEvent('mousedown', {
-  clientX:  dragx,
-  clientY:  dragy,
+  movementX: dragx,
+  movementY: dragy,
+  screenX: dragx,
+  screenY: dragy,
   bubbles: true,
   cancelable: true
 });
 				if (dragx >-3000) dragx-=50;
 
 const mouseMoveEvent = new MouseEvent('mousemove', {
-  clientX: dragx,
-  clientY:  dragy,
+  movementX: dragx,
+  movementY: dragy,
+  screenX: dragx,
+  screenY: dragy,
   bubbles: true,
   cancelable: true
 });
