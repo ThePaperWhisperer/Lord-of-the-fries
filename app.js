@@ -67,6 +67,7 @@ hamburglar.style.zIndex = "10000";
 document.body.appendChild(hamburglar);
 hamburglar.hidden = true;
 var clickH = 0;
+				var element = document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[0];
 async function burglar(){
 	clickH = 0;
 	if(night == true){
@@ -592,7 +593,6 @@ async function load() {
 			}
 			if(e.key == "w"){
 				e.preventDefault();
-				var element = document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[0];
 				const mouseDownEvent = new MouseEvent('mousedown', {
   movementX: dragx,
   movementY: dragy,
@@ -629,7 +629,6 @@ move()
 			}
 			if(e.key == "d"){
 				e.preventDefault();
-				var element = document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[0];
 				const mouseDownEvent = new MouseEvent('mousedown', {
   movementX: dragx,
   movementY: dragy,
@@ -665,7 +664,6 @@ move()
 			}
 			if(e.key == "s"){
 				e.preventDefault();
-				var element = document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[0];
 				const mouseDownEvent = new MouseEvent('mousedown', {
   movementX: dragx,
   movementY: dragy,
@@ -701,7 +699,6 @@ move()
 			}
 			if(e.key == "a"){
 				e.preventDefault();
-				var element = document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[0];
 				const mouseDownEvent = new MouseEvent('mousedown', {
   movementX: dragx,
   movementY: dragy,
@@ -749,7 +746,7 @@ move()
 
 			move();
 			matrix4 = new WebKitCSSMatrix(
-				window.getComputedStyle(document.getElementById("universe")).transform
+				window.getComputedStyle(element).transform
 			);
 			sol1 = document.getElementById("panther");
 			document.getElementById("coordinates").innerHTML = `You are at X: ${-dragx} Z: ${matrix4.m43}`;
