@@ -140,7 +140,7 @@ async function check(fram){
 			}, 300)
 		}
 		else{
-			fram.remove();
+			fram.hidden = "true";
 			await Queue.fire({currentProgressStep: 0,text: "Find Ronald and click him to get the key!"}); 		
 			document.getElementById("hunter").style.display = "block"; 						
 			battle();  
