@@ -33,22 +33,15 @@ var done = false;
 
 function drop(ev) {
   ev.preventDefault();
+   ev.preventDefault();
   var data = ev.dataTransfer.getData("text");
-  if(data === 1 && ev.target.id === "div1"){
-    corrects ++;
-    ev.target.appendChild(document.getElementById(data));
-  }
-  if(data === 2 && ev.target.id === "div2"){
-    corrects ++;
-    ev.target.appendChild(document.getElementById(data));
-  }
-  if(data === 3 && ev.target.id === "div3"){
-    corrects ++;
-    ev.target.appendChild(document.getElementById(data));
-  }
-  if(data === 4 && ev.target.id === "div4"){
-    corrects ++;
-    ev.target.appendChild(document.getElementById(data));
+  var drag_target = document.getElementById(data);
+  var drop_target = ev.target;
+
+  // Check if the drop target is a valid div and isn't already filled
+  if (drop_target.id === "div" + data && drop_target.children.length === 0) {
+    drop_target.appendChild(drag_target);
+    corrects++;
   }
   if(corrects === 4){
     done = true;
