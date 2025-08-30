@@ -1,5 +1,6 @@
 var flurry = [];
-var element;
+var element = document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[0];
+
 var house = false;
 var task = document.getElementById("enemyhealth");
 var tasks = document.getElementById("tasks");
@@ -382,7 +383,6 @@ async function move(){
 	matrix4 =  new WebKitCSSMatrix(window.getComputedStyle(element).transform)
 }
 async function load() {
-					 element = document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[0];
 
 	document.getElementById("heli").play();
 	document.getElementById("intro").play();
