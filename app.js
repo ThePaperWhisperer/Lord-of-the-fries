@@ -356,7 +356,7 @@ clearTimeout(timeout)
 													 universe.hidden = false;
 												 }, 5000)
 		if(daynumber >= 5){
-			day.innerHTML = "Day " + daynumber + ". look for an abandoned playground near(0, 50).";
+			day.innerHTML = "Day " + daynumber + ". look for an abandoned playground near(0, 50), then press 'e'.";
 			
 			model.style.height = "1500px";
 			model.style.width = "1500px"
@@ -558,7 +558,7 @@ async function load() {
 			}
 
 
-			if(e.key == "E" && daynumber >= 5 && dragx === 0 && matrix4.m43 === 0){
+			if(e.key == "e" && daynumber >= 5 && dragx === 0 && matrix4.m43 === 50){
 				await Queue.fire({currentProgressStep: 0,text: "Playground Entered! Find the clues to discover what happened."});
 				inroom = true;
 				frame = document.createElement("iframe");
