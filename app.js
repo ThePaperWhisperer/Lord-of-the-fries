@@ -134,7 +134,7 @@ async function check(){
 			}
 				
 	else{
-		if(frame.contentWindow.done == false){
+		if(frame.contentWindow.corrects != 4){
 			setTimeout(()=> {
 				check()
 			}, 300)
