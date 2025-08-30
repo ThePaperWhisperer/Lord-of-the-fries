@@ -123,24 +123,23 @@ async function check(fram){
 		if(!fram.contentWindow.end){
 		setTimeout(()=> {
 			check(fram)
-		}, 3000);
+		}, 300);
 				}
 				else{
 					fram.src = "move.html";
 					setTimeout(()=> {
 						check(fram)
-					}, 3000);
+					}, 300);
 				}
 			}
 				
 	else{
-		if(!fram.contentWindow.done){
+		if(fram.contentWindow.done == false){
 			setTimeout(()=> {
 				check(fram)
-			}, 3000)
+			}, 300)
 		}
 		else{
-			
 			fram.remove();
 			await Queue.fire({currentProgressStep: 0,text: "Find Ronald and click him to get the key!"}); 		
 			document.getElementById("hunter").style.display = "block"; 						
