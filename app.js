@@ -1,5 +1,4 @@
 var flurry = [];
-var element = document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[0];
 
 var house = false;
 var task = document.getElementById("enemyhealth");
@@ -379,8 +378,8 @@ clearTimeout(timeout)
 
 var rot = 0;
 async function move(){
-	if(element) element.style.transform = "translateZ("+ a +"px) perspective(1000px)";
-	matrix4 =  new WebKitCSSMatrix(window.getComputedStyle(element).transform)
+	if(document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[0]) document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[0].style.transform = "translateZ("+ a +"px) perspective(1000px)";
+	matrix4 =  new WebKitCSSMatrix(window.getComputedStyle(document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[0]).transform)
 }
 async function load() {
 
@@ -621,13 +620,13 @@ const mouseUpEvent = new MouseEvent('mouseup', {
   bubbles: true,
   cancelable: true
 });
-				element.dispatchEvent(mouseDownEvent);
+				document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[0].dispatchEvent(mouseDownEvent);
 
 // For mousemove, the listener may be the parent or even the document
-element.dispatchEvent(mouseMoveEvent);
+document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[0].dispatchEvent(mouseMoveEvent);
 
 // Dispatch mouseup to terminate the process
-element.dispatchEvent(mouseUpEvent);
+document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[0].dispatchEvent(mouseUpEvent);
 move() 
 
 			}
@@ -656,13 +655,13 @@ const mouseUpEvent = new MouseEvent('mouseup', {
   bubbles: true,
   cancelable: true
 });
-				element.dispatchEvent(mouseDownEvent);
+				document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[0].dispatchEvent(mouseDownEvent);
 
 // For mousemove, the listener may be the parent or even the document
-element.dispatchEvent(mouseMoveEvent);
+document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[0].dispatchEvent(mouseMoveEvent);
 
 // Dispatch mouseup to terminate the process
-element.dispatchEvent(mouseUpEvent);
+document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[0].dispatchEvent(mouseUpEvent);
 move() 
 
 			}
@@ -691,13 +690,13 @@ const mouseUpEvent = new MouseEvent('mouseup', {
   bubbles: true,
   cancelable: true
 });
-				element.dispatchEvent(mouseDownEvent);
+				document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[0].dispatchEvent(mouseDownEvent);
 
 // For mousemove, the listener may be the parent or even the document
-element.dispatchEvent(mouseMoveEvent);
+document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[0].dispatchEvent(mouseMoveEvent);
 
 // Dispatch mouseup to terminate the process
-element.dispatchEvent(mouseUpEvent);
+document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[0].dispatchEvent(mouseUpEvent);
 move() 
 
 			}
@@ -726,13 +725,13 @@ const mouseUpEvent = new MouseEvent('mouseup', {
   bubbles: true,
   cancelable: true
 });
-				element.dispatchEvent(mouseDownEvent);
+				document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[0].dispatchEvent(mouseDownEvent);
 
 // For mousemove, the listener may be the parent or even the document
-element.dispatchEvent(mouseMoveEvent);
+document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[0].dispatchEvent(mouseMoveEvent);
 
 // Dispatch mouseup to terminate the process
-element.dispatchEvent(mouseUpEvent);
+document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[0].dispatchEvent(mouseUpEvent);
 move() 
 			}
 			
@@ -750,7 +749,7 @@ move()
 
 			move();
 			matrix4 = new WebKitCSSMatrix(
-				window.getComputedStyle(element).transform
+				window.getComputedStyle(document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[0]).transform
 			);
 			sol1 = document.getElementById("panther");
 			document.getElementById("coordinates").innerHTML = `You are at X: ${-dragx} Z: ${matrix4.m43}`;
