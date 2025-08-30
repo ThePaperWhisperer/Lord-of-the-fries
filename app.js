@@ -378,6 +378,7 @@ clearTimeout(timeout)
 
 var rot = 0;
 async function move(){
+	if(element) element.style.transform = "translateZ("+ a +"px) perspective(1000px)"
 }
 async function load() {
 					 element = document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[0];
