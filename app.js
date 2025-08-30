@@ -121,26 +121,20 @@ async function burglar(){
 async function check(){
 	if(frame.src != "move.html"){
 		if(!frame.contentWindow.end){
-		setTimeout(()=> {
-			check()
-		}, 300);
+		setTimeout(check, 300);
 				}
 				else{
 					frame.src = "move.html";
-					setTimeout(()=> {
-						check()
-					}, 300);
+					setTimeout(check, 300);
 				}
 			}
 				
 	else{
 		if(frame.contentWindow.corrects != 4){
-			setTimeout(()=> {
-				check()
-			}, 300)
+			setTimeout(check, 300)
 		}
 		else{
-			frame.hidden = "true";
+			document.body.removeChild(frame);
 			await Queue.fire({currentProgressStep: 0,text: "Find Ronald and click him to get the key!"}); 		
 			document.getElementById("hunter").style.display = "block"; 						
 			battle();  
@@ -567,7 +561,7 @@ async function load() {
 				frame.style.height = "100vh";
 				frame.style.width = "100vw";
 				document.body.appendChild(frame)
-				check(frame);		
+				check();		
 		}
 			
 			
