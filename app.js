@@ -1,4 +1,5 @@
 var flurry = [];
+var element;
 var house = false;
 var task = document.getElementById("enemyhealth");
 var tasks = document.getElementById("tasks");
@@ -67,7 +68,6 @@ hamburglar.style.zIndex = "10000";
 document.body.appendChild(hamburglar);
 hamburglar.hidden = true;
 var clickH = 0;
-				var element = document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[0];
 async function burglar(){
 	clickH = 0;
 	if(night == true){
@@ -380,6 +380,8 @@ var rot = 0;
 async function move(){
 }
 async function load() {
+					 element = document.querySelector("iframe").contentWindow.document.querySelectorAll("canvas")[0];
+
 	document.getElementById("heli").play();
 	document.getElementById("intro").play();
 	document.getElementById("intro").onended = ()=>{
