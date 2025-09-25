@@ -7,7 +7,7 @@
     "socket.io": "^4.7.5"
   },
   "scripts": {
-    "tauri": "tauri",
+    "tauri": "tauri"
   },
   "devDependencies": {
     "@tauri-apps/cli": "^1.2.3"
